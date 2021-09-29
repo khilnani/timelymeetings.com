@@ -155,6 +155,10 @@ function setMeetingDuration() {
   let speedyMeetingAmount = 5;
   if (meetingDurationTime > 30) {
     speedyMeetingAmount = 10
+
+    if (minsLeft < speedyMeetingAmount) {
+      speedyMeetingAmount = 5;
+    }
   } 
 
   if (speedyMeetingTime === true && minsLeft > speedyMeetingAmount) {
