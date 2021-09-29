@@ -72,12 +72,18 @@
   localStorage.setItem('_duration', meetingDurationTime)
   localStorage.setItem('_endEarly', meetingEndEarlyTime)
   localStorage.setItem('_offsetTime', meetingOffsetTime)
+
+  return {
+    "meetingDurationTime": Number(meetingDurationTime),
+    "meetingEndEarlyTime": Number(meetingEndEarlyTime),
+    "meetingOffsetTime": Number(meetingOffsetTime),
+  }
 }
 
 //-------------------------------
 function updateFromLocalStorage () {
   console.log("updateFromLocalStorage")
-  
+
   let _duration = localStorage.getItem('_duration')
   let _endEarly = localStorage.getItem('_endEarly')
   let _offsetTime = localStorage.getItem('_offsetTime')
@@ -162,18 +168,14 @@ function updateFromLocalStorage () {
   //-------------------------------
 
   function startCountdown() {
-    let select = undefined;
 
-    select = document.getElementById("meetingDuration");
-    let meetingDurationTime = Number(select.options[select.selectedIndex].value);
+    let lc = saveToLocalStorage();
+    let meetingDurationTime = lc.meetingDurationTime;
+    let meetingOffsetTime = lc.meetingOffsetTime;
+    let meetingOffsetTime = lc.meetingOffsetTime;
+
     console.log("meetingDurationTime", meetingDurationTime);
-
-    select = document.getElementById("meetingOffset");
-    const meetingOffsetTime = Number(select.options[select.selectedIndex].value);
     console.log("meetingOffsetTime", meetingOffsetTime);
-
-    select = document.getElementById("meetingEndEarly");
-    const meetingEndEarlyTime = Number(select.options[select.selectedIndex].value);
     console.log("meetingEndEarlyTime", meetingEndEarlyTime);
 
     let targetMins = undefined;
@@ -209,9 +211,8 @@ function updateFromLocalStorage () {
     let meetingTime = deadline.toLocaleTimeString("en-us", meetingTimeOptions);
     document.getElementById("meetingTime").textContent = "Countdown to " + meetingTime
 
-    initializeClock("clockdiv", deadline);
-
-    saveToLocalStorage();
+    initializeClock("clockdiv", deadline);    
+  
   }
 
   //-------------------------------
