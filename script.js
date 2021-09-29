@@ -157,7 +157,8 @@ function setMeetingDuration() {
     speedyMeetingAmount = 10
   } 
 
-  if (speedyMeetingTime == 'true' && minsLeft > speedyMeetingAmount) {
+  if (speedyMeetingTime === true && minsLeft > speedyMeetingAmount) {
+    console.log('Applying speedyMeetingTime');
     minsLeft = minsLeft - speedyMeetingAmount;
   }
 
