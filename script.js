@@ -154,6 +154,14 @@ function setMeetingDuration() {
 
   const deadline = new Date(Date.parse(new Date()) + minsLeft * 60 * 1000);
 
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString
+  let meetingTimeOptions = {  
+    hour: "numeric", minute: "2-digit"  
+};  
+  let meetingTime = deadline.toLocaleTimeString("en-us", meetingTimeOptions);
+
+  document.getElementById("meetingTime").textContent = "Countdown to " + meetingTime
+
   initializeClock("clockdiv", deadline);
 }
 
