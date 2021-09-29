@@ -135,10 +135,15 @@ function notifyMe(message) {
         console.log('Notifications granted after being initially denied, attempting to send.');
         var notification = new Notification(message, opts);
       } else {
-        console.log('Notifications denied again.');
+        console.log('Notifications denied after ask.');
         alert(message);
       }
     });
+  }
+
+  else {
+    console.log('Notifications denied.');
+    alert(message);
   }
 
   // At last, if the user has denied notifications, and you
