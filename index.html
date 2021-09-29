@@ -40,32 +40,12 @@
   </div>
 </div>
 
-<div class="dropdown">
+<div>
+
   <p>
-    <label class="dropdownTitle" for="meetingDuration">Duration:</label>
-    <select class="dropdownSelect" name="meetingDuration" id="meetingDuration" onchange="setMeetingDuration()">
-      <option value="15">15 mins</option>
-      <option value="30" selected>30 mins</option>
-      <option value="60">1 hour</option>
-      <option value="90">1.5 hours</option>
-      <option value="120">2 hours</option>
-      <option value="150">2.5 hours</option>
-      <option value="180">3 hours</option>
-    </select>
 
-    <label class="dropdownTitle" for="meetingOffsetTime">Offset:</label>
-    <select class="dropdownSelect" ame="meetingOffset" id="meetingOffset" onchange="setMeetingDuration()">
-      <option value="0" selected>None</option>
-      <option value="15">15 mins</option>
-      <option value="30">30 mins</option>
-      <option value="45">45 mins</option>
-      <option value="60">1 hour</option>
-      <option value="90">1.5 hours</option>
-      <option value="120">2 hours</option>
-    </select>
-
-    <label class="dropdownTitle" for="meetingWarning">Early:</label>
-    <select class="dropdownSelect" name="meetingWarning" id="meetingWarning" onchange="setMeetingDuration()">
+    <label class="label" for="meetingWarning">Early Notification:</label>
+    <select class="select" name="meetingWarning" id="meetingWarning" onchange="setMeetingDuration()">
       <option value="0">0 mins</option>
       <option value="2">2 mins</option>
       <option value="3">3 mins</option>
@@ -81,6 +61,35 @@
       <option value="120">2 hours</option>
       <option value="150">2.5 hours</option>
     </select>
+
+    <label class="label" for="speedyMeeting">Speedy Meeting?</label>
+    <input class="checkbox" type="checkbox" id="speedyMeeting" name="speedyMeeting" checked onchange="setMeetingDuration()"/>
+
+  </p>
+
+  <p>
+    <label class="label" for="meetingDuration">Duration:</label>
+    <select class="select" name="meetingDuration" id="meetingDuration" onchange="setMeetingDuration()">
+      <option value="15">15 mins</option>
+      <option value="30" selected>30 mins</option>
+      <option value="60">1 hour</option>
+      <option value="90">1.5 hours</option>
+      <option value="120">2 hours</option>
+      <option value="150">2.5 hours</option>
+      <option value="180">3 hours</option>
+    </select>
+
+    <label class="label" for="meetingOffsetTime">Offset:</label>
+    <select class="select" ame="meetingOffset" id="meetingOffset" onchange="setMeetingDuration()">
+      <option value="0" selected>None</option>
+      <option value="15">15 mins</option>
+      <option value="30">30 mins</option>
+      <option value="45">45 mins</option>
+      <option value="60">1 hour</option>
+      <option value="90">1.5 hours</option>
+      <option value="120">2 hours</option>
+    </select>
+
   </p>
 
 </div>

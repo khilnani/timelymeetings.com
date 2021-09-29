@@ -148,6 +148,18 @@ function setMeetingDuration() {
   if (minsLeft > meetingWarningTime) {
     minsLeft = minsLeft - meetingWarningTime;
   }
+  
+  let speedyMeetingTime = document.getElementById('speedyMeeting').checked;
+  console.log('speedyMeetingTime', speedyMeetingTime)
+  
+  let speedyMeetingAmount = 5;
+  if (meetingDurationTime > 30) {
+    speedyMeetingAmount = 10
+  } 
+
+  if (speedyMeetingTime == 'true' && minsLeft > speedyMeetingAmount) {
+    minsLeft = minsLeft - speedyMeetingAmount;
+  }
 
   console.log("minsLeft", minsLeft);
 

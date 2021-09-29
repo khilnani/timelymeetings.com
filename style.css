@@ -22,12 +22,22 @@ a {
   color: #00703e;
   text-decoration: underline;
 }
-.dropdownTitle {
+.label {
   font-weight: 400;
   font-size: 14px;
   margin: 40px 0px 20px;
 }
-.dropdownSelect {
+.checkbox {
+  background-color: #00816a;
+  border-radius: 2px;
+  border: 0px;
+  color: white;
+  margin: 2px;
+  padding: 2px;
+  text-align: center;
+}
+
+.select {
   background-color: #00816a;
   border-radius: 2px;
   border: 0px;
