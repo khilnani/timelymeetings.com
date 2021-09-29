@@ -150,7 +150,7 @@ function setMeetingDuration() {
   }
   
   let speedyMeetingTime = document.getElementById('speedyMeeting').checked;
-  console.log('speedyMeetingTime', speedyMeetingTime)
+  console.log('speedyMeetingTime', speedyMeetingTime, typeof(speedyMeetingTime))
   
   let speedyMeetingAmount = 5;
   if (meetingDurationTime > 30) {
