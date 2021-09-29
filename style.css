@@ -29,7 +29,7 @@ a {
 }
 .checkbox {
   background-color: #00816a;
-  border-radius: 2px;
+  border-radius: 3px;
   border: 0px;
   color: white;
   margin: 2px;
@@ -39,7 +39,7 @@ a {
 
 .select {
   background-color: #00816a;
-  border-radius: 2px;
+  border-radius: 5px;
   border: 0px;
   color: white;
   margin: 2px;
@@ -59,13 +59,13 @@ a {
 #clockdiv > div {
   padding: 15px;
   margin: 15px 0px 15px 0px;
-  border-radius: 3px;
+  border-radius: 5px;
   background: #00bf96;
   display: inline-block;
 }
 #clockdiv div > span {
   padding: 15px;
-  border-radius: 3px;
+  border-radius: 5px;
   width: 40px;
   background: #00816a;
   display: inline-block;
