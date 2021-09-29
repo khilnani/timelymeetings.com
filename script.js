@@ -46,6 +46,7 @@ function initializeClock(id, endtime) {
 
     if (t.total <= 0) {
       clearInterval(timeinterval);
+      document.body.style.backgroundColor = "#FFFFFF"; // yellowwhite
     }
   }
 
