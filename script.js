@@ -1,7 +1,8 @@
 // Based on https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
 // CSS from https://stackoverflow.com/questions/7082257/css-how-to-skin-a-select-box-with-css
 
-let timeinterval = undefined;
+let timeInterval = undefined;
+let notificationWarningSent = false
 
 function getTimeRemaining(endtime) {
   const total = Date.parse(endtime) - Date.parse(new Date());
@@ -20,7 +21,8 @@ function getTimeRemaining(endtime) {
 }
 
 function initializeClock(id, endtime) {
-  clearInterval(timeinterval);
+  clearInterval(timeInterval);
+  notificationWarningSent = false;
 
   const clock = document.getElementById(id);
   const daysSpan = clock.querySelector(".days");
@@ -42,17 +44,23 @@ function initializeClock(id, endtime) {
       document.body.style.backgroundColor = "#00ECB9"; // default
     } else {
       document.body.style.backgroundColor = "#FBF719"; // yellow
+      if (!notificationWarningSent) 
+      {
+        notificationWarningSent = true
+        notifyUser('Your meeting has ended');
+      }
     }
 
     if (t.total <= 0) {
-      clearInterval(timeinterval);
+      clearInterval(timeInterval);
       document.body.style.backgroundColor = "#FFFFFF"; // white
+      notifyUser('Your meeting has ended');
     }
   }
 
   updateClock();
 
-  timeinterval = setInterval(updateClock, 1000);
+  timeInterval = setInterval(updateClock, 1000);
 }
 
 function setMeetingDuration() {
@@ -108,7 +116,7 @@ setMeetingDuration();
 // https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API
 // https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification
 
-function notifyMe(message) {
+function notifyUser(message) {
 
   let opts = {
     requireInteraction: true
