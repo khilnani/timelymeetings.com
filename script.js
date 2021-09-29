@@ -47,7 +47,7 @@ function initializeClock(id, endtime) {
       if (!notificationWarningSent) 
       {
         notificationWarningSent = true
-        notifyUser('Your meeting has ended');
+        notifyUser('Your meeting will end within 5 minutes');
       }
     }
 
