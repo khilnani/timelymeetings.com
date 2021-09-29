@@ -1,5 +1,4 @@
 tasks:
-  - init: node --version
-  - command: npx browser-sync start -s -w
+  - init: npx browser-sync start -s -w
 ports:
   - port: 8000
