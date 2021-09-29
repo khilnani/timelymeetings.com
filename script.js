@@ -205,7 +205,7 @@ function startCountdown() {
   };
   let meetingEndTimeStr = meetingEndTime.toLocaleTimeString("en-us", meetingTimeOptions);
 
-  const meetingStartTime = new Date(Date.parse(meetingEndTime) - meetingDurationTime * 60 * 1000);  
+  const meetingStartTime = new Date(Date.parse(meetingEndTime) - (meetingDurationTime-meetingEndEarlyTime) * 60 * 1000);  
   const meetingStartTimeStr = meetingStartTime.toLocaleTimeString("en-us", meetingTimeOptions);
   
   document.getElementById("meetingTime").textContent = meetingStartTimeStr + " to " + meetingEndTimeStr
