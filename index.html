@@ -45,7 +45,7 @@
 
   <p>
     <label class="label" for="meetingDuration">Meeting duration:</label>
-    <select class="select" name="meetingDuration" id="meetingDuration" onchange="setMeetingDuration()">
+    <select class="select" name="meetingDuration" id="meetingDuration" onchange="startCountdown()">
       <option value="15">15 mins</option>
       <option value="30" selected>30 mins</option>
       <option value="45">45 mins</option>
@@ -59,7 +59,7 @@
     
   <p>
     <label class="label" for="meetingEndEarly">End meeting early?</label>
-    <select class="select" name="meetingEndEarly" id="meetingEndEarly" onchange="setMeetingDuration()">
+    <select class="select" name="meetingEndEarly" id="meetingEndEarly" onchange="startCountdown()">
       <option value="0">No</option>
       <option value="2">2 mins</option>
       <option value="3">3 mins</option>
@@ -79,7 +79,7 @@
 
   <p>
     <label class="label" for="meetingOffsetTime">Shift detected start-time?</label>
-    <select class="select" ame="meetingOffset" id="meetingOffset" onchange="setMeetingDuration()">
+    <select class="select" ame="meetingOffset" id="meetingOffset" onchange="startCountdown()">
       <option value="0" selected>No</option>
       <option value="15">15 mins</option>
       <option value="30">30 mins</option>
