@@ -53,6 +53,7 @@ a {
   font-weight: 100;
   text-align: center;
   font-size: 30px;
+  margin: 0 0 10px 0;
 }
 #clockdiv > div {
   padding: 10px;
