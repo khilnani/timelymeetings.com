@@ -44,7 +44,7 @@
 <div>
 
   <p>
-    <label class="label" for="meetingDuration">Duration:</label>
+    <label class="label" for="meetingDuration">Meeting duration:</label>
     <select class="select" name="meetingDuration" id="meetingDuration" onchange="setMeetingDuration()">
       <option value="15">15 mins</option>
       <option value="30" selected>30 mins</option>
@@ -55,8 +55,10 @@
       <option value="150">2.5 hours</option>
       <option value="180">3 hours</option>
     </select>
-
-    <label class="label" for="meetingEndEarly">End Early:</label>
+  </p>
+    
+  <p>
+    <label class="label" for="meetingEndEarly">End meeting early?</label>
     <select class="select" name="meetingEndEarly" id="meetingEndEarly" onchange="setMeetingDuration()">
       <option value="0">No</option>
       <option value="2">2 mins</option>
