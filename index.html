@@ -19,7 +19,6 @@
 <body>
 
 <h1>Meeting Countdown Timer</h1>
-<p>Starts from the nearest 15min, 30min, or hour based on meeting duration</p>
 
 <div id="clockdiv">
   <!--
@@ -57,20 +56,9 @@
       <option value="180">3 hours</option>
     </select>
 
-    <label class="label" for="meetingOffsetTime">Offset:</label>
-    <select class="select" ame="meetingOffset" id="meetingOffset" onchange="setMeetingDuration()">
-      <option value="0" selected>None</option>
-      <option value="15">15 mins</option>
-      <option value="30">30 mins</option>
-      <option value="45">45 mins</option>
-      <option value="60">1 hour</option>
-      <option value="90">1.5 hours</option>
-      <option value="120">2 hours</option>
-    </select>
-
     <label class="label" for="meetingEndEarly">End Early:</label>
     <select class="select" name="meetingEndEarly" id="meetingEndEarly" onchange="setMeetingDuration()">
-      <option value="0">0 mins</option>
+      <option value="0">No</option>
       <option value="2">2 mins</option>
       <option value="3">3 mins</option>
       <option value="5" selected>5 mins</option>
@@ -88,6 +76,18 @@
 
   </p>
 
+  <p>
+    <label class="label" for="meetingOffsetTime">Shift auto-detected start-time?</label>
+    <select class="select" ame="meetingOffset" id="meetingOffset" onchange="setMeetingDuration()">
+      <option value="0" selected>No</option>
+      <option value="15">15 mins</option>
+      <option value="30">30 mins</option>
+      <option value="45">45 mins</option>
+      <option value="60">1 hour</option>
+      <option value="90">1.5 hours</option>
+      <option value="120">2 hours</option>
+    </select>
+  </p>  
 </div>
 
   <script  src="./script.js"></script>
