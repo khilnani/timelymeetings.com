@@ -172,7 +172,7 @@ function updateFromLocalStorage () {
     let lc = saveToLocalStorage();
     let meetingDurationTime = lc.meetingDurationTime;
     let meetingOffsetTime = lc.meetingOffsetTime;
-    let meetingOffsetTime = lc.meetingOffsetTime;
+    let meetingEndEarlyTime = lc.meetingEndEarlyTime;
 
     console.log("meetingDurationTime", meetingDurationTime);
     console.log("meetingOffsetTime", meetingOffsetTime);
