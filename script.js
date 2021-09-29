@@ -119,9 +119,9 @@ function setMeetingDuration() {
   const meetingOffsetTime = Number(select.options[select.selectedIndex].value);
   console.log("meetingOffsetTime", meetingOffsetTime);
 
-  select = document.getElementById("meetingWarning");
-  const meetingWarningTime = Number(select.options[select.selectedIndex].value);
-  console.log("meetingWarningTime", meetingWarningTime);
+  select = document.getElementById("meetingEndEarly");
+  const meetingEndEarlyTime = Number(select.options[select.selectedIndex].value);
+  console.log("meetingEndEarlyTime", meetingEndEarlyTime);
 
   let targetMins = undefined;
   let meetingStartedAtmins = undefined;
@@ -145,28 +145,10 @@ function setMeetingDuration() {
 
   let minsLeft = targetMins - mins + meetingOffsetTime;
 
-  if (minsLeft > meetingWarningTime) {
-    minsLeft = minsLeft - meetingWarningTime;
+  if (minsLeft > meetingEndEarlyTime) {
+    minsLeft = minsLeft - meetingEndEarlyTime;
   }
   
-  let speedyMeetingTime = document.getElementById('speedyMeeting').checked;
-  console.log('speedyMeetingTime', speedyMeetingTime, typeof(speedyMeetingTime))
-  
-  let speedyMeetingAmount = 5;
-  if (meetingDurationTime > 30) {
-    speedyMeetingAmount = 10
-
-    if (minsLeft < speedyMeetingAmount) {
-      speedyMeetingAmount = 5;
-    }
-  } 
-
-  console.log('speedyMeetingAmount', speedyMeetingAmount, 'minsLeft', minsLeft);
-
-  if (speedyMeetingTime === true && minsLeft > speedyMeetingAmount) {
-    console.log('Applying speedyMeetingTime');
-    minsLeft = minsLeft - speedyMeetingAmount;
-  }
 
   console.log("minsLeft", minsLeft);
 

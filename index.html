@@ -23,10 +23,10 @@
 
 <div id="clockdiv">
   <!--
-    <div>
-      <span class="days"></span>
-      <div class="smalltext">Days</div>
-    </div>
+  <div>
+    <span class="days"></span>
+    <div class="smalltext">Days</div>
+  </div>
   -->
   <div>
     <span class="hours"></span>
@@ -43,31 +43,6 @@
 </div>
 
 <div>
-
-  <p>
-
-    <label class="label" for="meetingWarning">Early Notification:</label>
-    <select class="select" name="meetingWarning" id="meetingWarning" onchange="setMeetingDuration()">
-      <option value="0">0 mins</option>
-      <option value="2">2 mins</option>
-      <option value="3">3 mins</option>
-      <option value="5" selected>5 mins</option>
-      <option value="10">10 mins</option>
-      <option value="15">15 mins</option>
-      <option value="20">20 mins</option>
-      <option value="25">25 mins</option>
-      <option value="30">30 mins</option>
-      <option value="45">45 mins</option>
-      <option value="60">1 hour</option>
-      <option value="90">1.5 hours</option>
-      <option value="120">2 hours</option>
-      <option value="150">2.5 hours</option>
-    </select>
-
-    <label class="label" for="speedyMeeting">Speedy?</label>
-    <input class="checkbox" type="checkbox" id="speedyMeeting" name="speedyMeeting" checked onchange="setMeetingDuration()"/>
-
-  </p>
 
   <p>
     <label class="label" for="meetingDuration">Duration:</label>
@@ -91,6 +66,24 @@
       <option value="60">1 hour</option>
       <option value="90">1.5 hours</option>
       <option value="120">2 hours</option>
+    </select>
+
+    <label class="label" for="meetingEndEarly">End Early:</label>
+    <select class="select" name="meetingEndEarly" id="meetingEndEarly" onchange="setMeetingDuration()">
+      <option value="0">0 mins</option>
+      <option value="2">2 mins</option>
+      <option value="3">3 mins</option>
+      <option value="5" selected>5 mins</option>
+      <option value="10">10 mins</option>
+      <option value="15">15 mins</option>
+      <option value="20">20 mins</option>
+      <option value="25">25 mins</option>
+      <option value="30">30 mins</option>
+      <option value="45">45 mins</option>
+      <option value="60">1 hour</option>
+      <option value="90">1.5 hours</option>
+      <option value="120">2 hours</option>
+      <option value="150">2.5 hours</option>
     </select>
 
   </p>
