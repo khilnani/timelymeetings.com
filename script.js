@@ -105,7 +105,14 @@ function setMeetingDuration() {
 
 setMeetingDuration();
 
+// https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API
+// https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification
+
 function notifyMe(message) {
+
+  let opts = {
+    requireInteraction: true
+  }
   // Let's check if the browser supports notifications
   if (!("Notification" in window)) {
     console.log('Notifications not supported.');
@@ -116,17 +123,20 @@ function notifyMe(message) {
   else if (Notification.permission === "granted") {
     // If it's okay let's create a notification
     console.log('Notifications already granted, attempting to send.');
-    var notification = new Notification(message);
+    var notification = new Notification(message, opts);
   }
 
   // Otherwise, we need to ask the user for permission
   else if (Notification.permission !== "denied") {
-    console.log('Notifications denied, attempting to re-ask.');
+    console.log('Notifications permissions being re-asked.');
     Notification.requestPermission().then(function (permission) {
       // If the user accepts, let's create a notification
       if (permission === "granted") {
         console.log('Notifications granted after being initially denied, attempting to send.');
-        var notification = new Notification(message);
+        var notification = new Notification(message, opts);
+      } else {
+        console.log('Notifications denied again.');
+        alert(message);
       }
     });
   }
