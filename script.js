@@ -108,20 +108,24 @@ setMeetingDuration();
 function notifyMe(message) {
   // Let's check if the browser supports notifications
   if (!("Notification" in window)) {
+    console.log('Notifications not supported.');
     alert(message);
   }
 
   // Let's check whether notification permissions have already been granted
   else if (Notification.permission === "granted") {
     // If it's okay let's create a notification
+    console.log('Notifications already granted, attempting to send.');
     var notification = new Notification(message);
   }
 
   // Otherwise, we need to ask the user for permission
   else if (Notification.permission !== "denied") {
+    console.log('Notifications denied, attempting to re-ask.');
     Notification.requestPermission().then(function (permission) {
       // If the user accepts, let's create a notification
       if (permission === "granted") {
+        console.log('Notifications granted after being initially denied, attempting to send.');
         var notification = new Notification(message);
       }
     });
