@@ -196,17 +196,21 @@ function startCountdown() {
   }
   console.log("minsLeft", minsLeft);
 
-  const deadline = new Date(Date.parse(new Date()) + minsLeft * 60 * 1000);
+  const meetingEndTime = new Date(Date.parse(new Date()) + minsLeft * 60 * 1000);
 
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString
   let meetingTimeOptions = {
     hour: "numeric",
     minute: "2-digit"
   };
-  let meetingTime = deadline.toLocaleTimeString("en-us", meetingTimeOptions);
-  document.getElementById("meetingTime").textContent = "Countdown to " + meetingTime
+  let meetingEndTimeStr = meetingEndTime.toLocaleTimeString("en-us", meetingTimeOptions);
 
-  initializeClock("clockdiv", deadline);
+  const meetingStartTime = new Date(Date.parse(meetingEndTime) - meetingDurationTime * 60 * 1000);  
+  const meetingStartTimeStr = meetingStartTime.toLocaleTimeString("en-us", meetingTimeOptions);
+  
+  document.getElementById("meetingTime").textContent = meetingStartTimeStr + " to " + meetingEndTimeStr
+
+  initializeClock("clockdiv", meetingEndTime);
 
 }
 
