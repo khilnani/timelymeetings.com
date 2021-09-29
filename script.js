@@ -70,7 +70,7 @@ function initializeClock(id, endtime) {
   notificationWarningSent = false;
 
   const clock = document.getElementById(id);
-  const daysSpan = clock.querySelector(".days");
+  //const daysSpan = clock.querySelector(".days");
   const hoursSpan = clock.querySelector(".hours");
   const minutesSpan = clock.querySelector(".minutes");
   const secondsSpan = clock.querySelector(".seconds");
@@ -78,7 +78,7 @@ function initializeClock(id, endtime) {
   function updateClock() {
     const t = getTimeRemaining(endtime);
 
-    daysSpan.innerHTML = t.days;
+    //daysSpan.innerHTML = t.days;
     hoursSpan.innerHTML = ("0" + t.hours).slice(-2);
     minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
     secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
