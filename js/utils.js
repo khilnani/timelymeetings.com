@@ -71,7 +71,8 @@ function getTimeslots(now, duration) {
     current = next;    
   }
 
-  let slotCount = Math.ceil(duration / increment);
+  // don't forget the extra 4
+  let slotCount = Math.ceil(duration / increment) + 4;
   console.log('slotCount', slotCount);
   
   slots = slots.slice( slots.length - slotCount);
