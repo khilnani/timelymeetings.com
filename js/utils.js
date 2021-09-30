@@ -61,7 +61,7 @@ function getTimeslots(now, duration) {
         slots.push({
           label: next.toLocaleTimeString(),
           value: next.toString(),
-          false,
+          selected: false,
         });
       }
       break;
