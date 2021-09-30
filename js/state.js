@@ -70,9 +70,12 @@ function saveToLocalStorage() {
   
     if (meetingDuration)
       document.getElementById("meetingDuration").value = meetingDuration;
-    if (selectHasValue("meetingSlot", meetingSlot))  
+    
+      if (selectHasValue("meetingSlot", meetingSlot))  
       document.getElementById("meetingSlot").value = meetingSlot;
-    if (meetingSpeedy)
+    
+      if (meetingSpeedy) {
       console.log('meetingSpeedy.checked', (meetingSpeedy === "true"))
       document.getElementById("meetingSpeedy").checked = (meetingSpeedy === "true");
+    }
   }
