@@ -33,10 +33,6 @@ function updateStartTimeOptions() {
       selected = slots[index].value;
   }    
   select.value = selected;
-
-  updateFromLocalStorage();
-
-  updateCountdown();
 }
 
 //-------------------------------
@@ -72,6 +68,8 @@ function updateCountdown () {
 function onDurationChange() {
   saveDurationToLocalStorage();
   updateStartTimeOptions();
+  updateFromLocalStorage();
+  updateCountdown();
 }
 
 //-------------------------------
@@ -94,7 +92,7 @@ function onSlotChange() {
 (function() {
 
   updateStartTimeOptions();
-
   updateFromLocalStorage();
+  updateCountdown();
 
 })();

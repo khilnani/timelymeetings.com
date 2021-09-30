@@ -1,6 +1,6 @@
 let timeInterval = undefined;
 let notificationWarningSent = false
-
+let notificationFinalSent = false
 
 // Based on https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
 // CSS from https://stackoverflow.com/questions/7082257/css-how-to-skin-a-select-box-with-css
@@ -26,6 +26,7 @@ function getTimeRemaining(endtime) {
 function initializeClock(id, endtime) {
   clearInterval(timeInterval);
   notificationWarningSent = false;
+  notificationFinalSent = false;
 
   const clock = document.getElementById(id);
   const hoursSpan = clock.querySelector(".hours");
@@ -34,11 +35,6 @@ function initializeClock(id, endtime) {
 
   function updateClock() {
     const t = getTimeRemaining(endtime);
-
-    hoursSpan.innerHTML = ("0" + t.hours).slice(-2);
-    minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
-    secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
-
     // console.log("t.total", t.total);
 
     if (t.total > 5 * 60 * 1000) {
@@ -54,8 +50,15 @@ function initializeClock(id, endtime) {
     if (t.total <= 0) {
       clearInterval(timeInterval);
       document.body.style.backgroundColor = "#FFFFFF"; // white
-      notifyUser('Your meeting has ended');
+      if (!notificationFinalSent) {
+        notificationFinalSent = true
+        notifyUser('Your meeting has ended');
+      }
     }
+
+    hoursSpan.innerHTML = ("0" + t.hours).slice(-2);
+    minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
   }
 
   updateClock();
