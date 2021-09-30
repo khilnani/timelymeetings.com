@@ -56,13 +56,14 @@ function getTimeslots(now, duration) {
     });
     
     if (selected) {
-      // Add an extra slot (if in the same day) in case folks want to set up for a meeting early
-      if (next < midnight) {
+      // Add 4 extra slots in case folks want to set up for a meeting up to an hour early
+      for (let i=0; i > 4; i++) {
         slots.push({
           label: next.toLocaleTimeString(),
           value: next.toString(),
           selected: false,
         });
+        next = addMinutes(next, increment);
       }
       break;
     }
