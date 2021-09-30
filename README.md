@@ -1,12 +1,12 @@
 # timelymeetings.com
 
-Attempts to be a simple no frolls app that starts counting down how much time is left in your current meeting.
+Attempts to be a simple no-frills app that starts counting down how much time is left in your current meeting.
 
 Key features (So far)
 
-* *Notifications* - The app will leverahe browser notifications if availabled. It will fall back to old school alert popups if notifications are not available (e.g. Mobile iOS Safari) or disabled.
-* *Auto-detect Meeting Start Time* 0 The application tries to auto-detect when your meeting started so you do not need to do any math to determine how much time is left. But, you can adjust this if it gets it wrong.
-* *Resume Support* - The meeting configuration is also saved in the browser, so if you refresh or recreate the browser window it will pick up where it left off.
+* *Notifications* - The app will leverage browser notifications if available. It will fall back to old school alert popups if notifications are not available (e.g. Mobile iOS Safari) or disabled.
+* *Auto-detect Meeting Start Time* - The application will auto-detect when your meeting start time so you do not need to do any math to determine how much time is left. But, you can adjust this if needed.
+* *Resume Support* - The meeting configuration is saved in the browser, so if you refresh or recreate the browser window the count down will pick up where it left off.
 
 
 ## Code Used
