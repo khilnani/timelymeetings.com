@@ -57,7 +57,7 @@ function getTimeslots(now, duration) {
     
     if (selected) {
       // Add 4 extra slots in case folks want to set up for a meeting up to an hour early
-      for (let i=0; i > 4; i++) {
+      for (let i=0; i < 4; i++) {
         slots.push({
           label: next.toLocaleTimeString(),
           value: next.toString(),
