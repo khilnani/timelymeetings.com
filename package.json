@@ -1,8 +1,8 @@
 {
   "name": "timelymeetings",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Improving the effectiveness of meetings.",
+  "private": true,
   "scripts": {
     "serve": "npx browser-sync start -s -w",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/khilnani/timelymeetings/issues"
   },
-  "homepage": "https://github.com/khilnani/timelymeetings#readme"
+  "homepage": "https://github.com/khilnani/timelymeetings#readme",
+  "devDependencies": {
+    "browser-sync": "^2.27.5"
+  }
 }
