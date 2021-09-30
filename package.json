@@ -1,0 +1,20 @@
+{
+  "name": "timelymeetings",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "npx browser-sync start -s -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khilnani/timelymeetings.git"
+  },
+  "author": "",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/khilnani/timelymeetings/issues"
+  },
+  "homepage": "https://github.com/khilnani/timelymeetings#readme"
+}
