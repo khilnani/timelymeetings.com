@@ -22,7 +22,7 @@ function updateStartTimeOptions() {
   let now = getNow();
   let slots = getTimeslots(now.date, meetingDuration);
 
-  var select = document.getElementById("meetingSlot");
+  let select = document.getElementById("meetingSlot");
   select.options.length = 0;
 
   let selected = undefined;
