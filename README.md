@@ -2,6 +2,8 @@
 
 A simple no-frills app that starts counting down how much time is left in your current meeting. 
 
+> *Help me help you* - for quick access make https://timelymeetings.com your browser's home page or add this to your phone's Home Screen
+
 Key features (So far)
 
 * **Notifications** - You get two notifications - a 5 minute warning that changes the app to yellow and when the meeting wraps up. The app will send browser notifications if available and fall back to old school alert popups if notifications are not available (e.g. Mobile iOS Safari) or disabled.
