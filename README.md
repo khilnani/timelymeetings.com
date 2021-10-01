@@ -2,7 +2,7 @@
 
 A simple no-frills app that starts counting down how much time is left in your current meeting. 
 
-> **Help me help you!** For quick access make [timelymeetings.com](https://timelymeetings.com) your browser's home page [?](https://lmgtfy.app/?q=change+browser%27s+default+home+page) or add [timelymeetings.com](https://timelymeetings.com) to your phone's Home Screen [?](https://lmgtfy.app/?q=ios+add+a+web+page+to+home+screen)
+> **Help me help you!** For quick access make [timelymeetings.com](https://timelymeetings.com) your browser's home page [(?)](https://lmgtfy.app/?q=change+browser%27s+default+home+page) or add [timelymeetings.com](https://timelymeetings.com) to your phone's Home Screen [(?)](https://lmgtfy.app/?q=ios+add+a+web+page+to+home+screen)
 
 Key features (So far)
 
