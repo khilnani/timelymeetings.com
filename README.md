@@ -2,7 +2,7 @@
 
 A simple no-frills app that starts counting down how much time is left in your current meeting. 
 
-> *Help me help you* - for quick access make https://timelymeetings.com your browser's home page or add this to your phone's Home Screen
+> *Help me help you !* For quick access make https://timelymeetings.com your browser's home page or add this to your phone's Home Screen
 
 Key features (So far)
 
