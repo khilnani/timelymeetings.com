@@ -1,0 +1,109 @@
+* {
+  margin:0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+text-align: center;
+background: #00ecb9;
+font-family: sans-serif;
+font-weight: 100;
+color: #00703e;
+}
+
+h1 {
+font-weight: 500;
+font-size: 26px;
+}
+
+p {
+font-weight: 400;
+font-size: 14px;
+margin: 10px;
+}
+
+a {
+color: #00703e;
+text-decoration: underline;
+}
+
+.container {
+align-items: center;
+display: flex;
+justify-content: center;
+height: 100%;
+width: 100%;
+}
+
+.meetingTime {
+margin: 20px 0px 10px 0px;  
+}
+
+.tinyText {
+font-weight: 500;
+font-size: 11px;
+}
+
+.label {
+font-weight: 400;
+font-size: 15px;
+margin: 40px 0px 20px;
+}
+
+.checkbox {
+background-color: #00816a;
+border-radius: 3px;
+border: 0px;
+color: white;
+margin: 2px;
+padding: 2px;
+text-align: center;
+}
+
+.select {
+background-color: #00816a;
+border-radius: 5px;
+border: 0px;
+color: white;
+margin: 2px;
+padding: 2px;
+text-align: center;
+font-size: 15px;
+}
+
+#clockdiv {
+font-family: sans-serif;
+color: #fff;
+display: inline-block;
+font-weight: 100;
+text-align: center;
+font-size: 30px;
+}
+
+#clockdiv > div {
+padding: 10px;
+margin: 15px 0px 15px 0px;
+border-radius: 5px;
+background: #00bf96;
+display: inline-block;
+}
+
+#clockdiv div > span {
+padding: 15px;
+border-radius: 5px;
+width: 40px;
+background: #00816a;
+display: inline-block;
+}
+
+.clocktext {
+padding-top: 5px;
+font-size: 16px;
+font-weight: 500;
+}
