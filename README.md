@@ -23,3 +23,31 @@ The below articles/tutorials help the project get started
 
 - https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
 - https://stackoverflow.com/questions/7082257/css-how-to-skin-a-select-box-with-css
+
+
+## Dev Notes
+
+### Overview
+
+Built using [React](https://reactjs.org/) and [Ionic](https://ionicframework.com)
+
+### Links
+
+- Ionic Components - https://ionicframework.com/docs/components
+- Ionic Icons - https://ionic.io/ionicons
+
+### Setup 
+
+- See https://ionicframework.com/docs/intro/environment
+- Install Pods - `cd ios/App && pod install`
+
+### Dev
+
+#### Web
+
+- Web Livereload - `ionic serve`
+
+#### iOS
+
+- iOS Live Reload - `ionic capacitor run ios -l --external`
+- Manual file sync to iOS - `ionic capacitor copy ios`

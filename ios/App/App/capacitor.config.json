@@ -1,0 +1,6 @@
+{
+	"appId": "org.khilnani.TimelyMeetings",
+	"appName": "TimelyMeetings",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

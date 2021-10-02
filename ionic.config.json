@@ -1,0 +1,7 @@
+{
+  "name": "TimelyMeetings",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
