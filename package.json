@@ -2,6 +2,7 @@
   "name": "my-react-app",
   "version": "0.1.0",
   "private": true,
+  "license": "ELv2",
   "dependencies": {
     "@capacitor/cli": "^3.2.4",
     "@capacitor/core": "^3.2.4",
