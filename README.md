@@ -30,6 +30,13 @@ Mobile app built using [Ionic](https://ionicframework.com)
 
 - https://capacitorjs.com/docs/getting-started
 - https://capacitorjs.com/docs/web
+- https://capacitorjs.com/docs/apis
+
+## Issues
+
+- Backgrounf tasks with capacitor
+  - https://github.com/ionic-team/capacitor/issues/3032
+  - Alt - https://github.com/robingenz/capacitor-background-task
 
 ## Dev
 
