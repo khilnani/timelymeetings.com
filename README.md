@@ -23,7 +23,7 @@ A simple no-frills app that starts counting down how much time is left in your c
 
 ### Overview
 
-Mobile app built using [Ionic](https://ionicframework.com)
+Mobile app built using [React](https://reactjs.org) and [Ionic Capacitor](https://capacitorjs.com)
 
 
 ## Links
