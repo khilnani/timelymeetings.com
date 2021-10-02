@@ -1,7 +1,7 @@
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - name: NPM Install
-    init: cd docs && npm install
+  - name: Echo
+    init: echo 'Echo!'
 
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
 ports:
