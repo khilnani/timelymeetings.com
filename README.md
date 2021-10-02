@@ -21,10 +21,7 @@ A simple no-frills app that starts counting down how much time is left in your c
 
 ## Overview
 
-### Overview
-
 Mobile app built using [React](https://reactjs.org) and [Ionic Capacitor](https://capacitorjs.com)
-
 
 ## Links
 
@@ -32,22 +29,11 @@ Mobile app built using [React](https://reactjs.org) and [Ionic Capacitor](https:
 - https://capacitorjs.com/docs/web
 - https://capacitorjs.com/docs/apis
 
-## Issues
+## Known Issues
 
-- Backgrounf tasks with capacitor
+- Background tasks with capacitor
   - https://github.com/ionic-team/capacitor/issues/3032
   - Alt - https://github.com/robingenz/capacitor-background-task
-
-## Dev
-
-### Web
-
-- Update capacitor.js - `npx cap sync web`
-
-### iOS
-
-- Open Project - `npx cap open ios`
-- Run - `npx cap run ios`
 
 
 ## Miscellaneous 
