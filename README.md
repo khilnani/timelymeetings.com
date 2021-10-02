@@ -51,3 +51,6 @@ Built using [React](https://reactjs.org/) and [Ionic](https://ionicframework.com
 
 - iOS Live Reload - `ionic capacitor run ios -l --external`
 - Manual file sync to iOS - `ionic capacitor copy ios`
+
+
+
