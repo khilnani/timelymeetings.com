@@ -35,7 +35,8 @@ async function initializeClock(id, endtime) {
 
   async function updateClock() {
     const t = getTimeRemaining(endtime);
-    console.log("updateClock", t.total);
+    console.log("updateClock");
+    //console.log("updateClock", t.total);
 
     if (t.total > 5 * 60 * 1000) {
       document.body.style.backgroundColor = "#00ECB9"; // default
