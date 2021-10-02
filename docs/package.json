@@ -18,6 +18,15 @@
   },
   "homepage": "https://github.com/khilnani/timelymeetings#readme",
   "devDependencies": {
+    "@capacitor/cli": "3.2.4",
     "browser-sync": "^2.27.5"
+  },
+  "dependencies": {
+    "@capacitor/app": "1.0.3",
+    "@capacitor/core": "3.2.4",
+    "@capacitor/haptics": "1.1.0",
+    "@capacitor/ios": "3.2.4",
+    "@capacitor/keyboard": "1.1.0",
+    "@capacitor/status-bar": "1.0.3"
   }
 }

@@ -14,8 +14,8 @@ A simple no-frills app that starts counting down how much time is left in your c
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/khilnani/timelymeetings/master/docs/30DCBFAF-DCF1-45A6-AAFF-F3DED62C02F7.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings/master/docs/74A63E99-30AB-4196-A31F-621AEB2177C5.png" width="40%" />
-<img src="https://raw.githubusercontent.com/khilnani/timelymeetings/master/docs/0710F98A-9176-4A34-93CF-4102B0F1878A.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings/master/docs/03F0D00B-5AB7-4FA3-98BA-94B25834137C.png" width="40%" />
+<img src="https://raw.githubusercontent.com/khilnani/timelymeetings/master/README/30DCBFAF-DCF1-45A6-AAFF-F3DED62C02F7.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings/master/README/74A63E99-30AB-4196-A31F-621AEB2177C5.png" width="40%" />
+<img src="https://raw.githubusercontent.com/khilnani/timelymeetings/master/README/0710F98A-9176-4A34-93CF-4102B0F1878A.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings/master/README/03F0D00B-5AB7-4FA3-98BA-94B25834137C.png" width="40%" />
 
 ## Miscellaneous 
 
