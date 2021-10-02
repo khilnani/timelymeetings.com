@@ -1,0 +1,9 @@
+{
+	"appId": "org.khilnani.TimyMeetings",
+	"appName": "TimelyMeetings",
+	"webDir": "build",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"LocalNotifications": {}
+	}
+}

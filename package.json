@@ -1,0 +1,49 @@
+{
+  "name": "my-react-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@capacitor/cli": "^3.2.4",
+    "@capacitor/core": "^3.2.4",
+    "@capacitor/ios": "^3.2.4",
+    "@capacitor/local-notifications": "^1.0.6",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "BUILD_PATH='./build' react-scripts build",
+    "gh-pages": "BUILD_PATH='./build' react-scripts build",
+    "serve": "npx http-server ./build -p 3000",
+    "sync": "npx cap sync",
+    "ios": "npx cap run ios",
+    "ios-open": "npx cap open ios",
+    "test": "react-scripts test"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "http-server": "^13.0.2"
+  }
+}
