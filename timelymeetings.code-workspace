@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true,
+		"terminal.integrated.cwd": "/Users/nkhilnani/git/khilnani/timelymeetings.com"
+	}
+}

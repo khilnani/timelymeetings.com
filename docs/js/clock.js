@@ -23,7 +23,7 @@ function getTimeRemaining(endtime) {
 
 //-------------------------------
 
-function initializeClock(id, endtime) {
+async function initializeClock(id, endtime) {
   clearInterval(timeInterval);
   notificationWarningSent = false;
   notificationFinalSent = false;
@@ -33,9 +33,9 @@ function initializeClock(id, endtime) {
   const minutesSpan = clock.querySelector(".minutes");
   const secondsSpan = clock.querySelector(".seconds");
 
-  function updateClock() {
+  async function updateClock() {
     const t = getTimeRemaining(endtime);
-    // console.log("t.total", t.total);
+    console.log("updateClock", t.total);
 
     if (t.total > 5 * 60 * 1000) {
       document.body.style.backgroundColor = "#00ECB9"; // default
@@ -43,7 +43,7 @@ function initializeClock(id, endtime) {
       document.body.style.backgroundColor = "#FBF719"; // yellow
       if (!notificationWarningSent) {
         notificationWarningSent = true
-        notifyUser('Your meeting will end within 5 minutes');
+        await notifyUser('Your meeting will end within 5 minutes');
       }
     }
 
@@ -52,7 +52,7 @@ function initializeClock(id, endtime) {
       document.body.style.backgroundColor = "#FFFFFF"; // white
       if (!notificationFinalSent) {
         notificationFinalSent = true
-        notifyUser('Your meeting has ended');
+        await notifyUser('Your meeting has ended');
       }
     }
 
@@ -61,7 +61,7 @@ function initializeClock(id, endtime) {
     secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
   }
 
-  updateClock();
+  await updateClock();
 
   timeInterval = setInterval(updateClock, 1000);
 }

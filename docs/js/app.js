@@ -37,7 +37,7 @@ function updateStartTimeOptions() {
 
 //-------------------------------
 
-function updateCountdown () {
+async function updateCountdown () {
   console.log('updateCountdown');
 
   saveToLocalStorage();
@@ -59,40 +59,41 @@ function updateCountdown () {
 
   updateMeetingTime(meetingStartTime, meetingEndTime);
 
-  initializeClock("clockdiv", meetingEndTime);
+  await initializeClock("clockdiv", meetingEndTime);
 
 }
 
 //-------------------------------
 
-function onDurationChange() {
+async function onDurationChange() {
   saveDurationToLocalStorage();
   updateStartTimeOptions();
   updateFromLocalStorage();
-  updateCountdown();
+  await updateCountdown();
 }
 
 //-------------------------------
 
-function onSpeedyChange() {
+async function onSpeedyChange() {
   saveSpeedyToLocalStorage();
-  updateCountdown()
+  await updateCountdown()
 }
 
 //-------------------------------
 
-function onSlotChange() {
+async function onSlotChange() {
   saveSlotToLocalStorage();
-  updateCountdown()
+  await updateCountdown()
 }
 
 //-------------------------------
 //-------------------------------
 
-(function() {
+(async function() {
 
   updateStartTimeOptions();
   updateFromLocalStorage();
-  updateCountdown();
+  await updateCountdown();
 
 })();
+
