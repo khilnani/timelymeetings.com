@@ -20,10 +20,10 @@
     "start": "react-scripts start",
     "build": "BUILD_PATH='./build' react-scripts build",
     "gh-pages": "BUILD_PATH='./build' react-scripts build",
-    "serve": "npx http-server ./build -p 3000",
-    "sync": "npx cap sync",
-    "ios": "npx cap run ios",
-    "ios-open": "npx cap open ios",
+    "serve": "npm run build && npx http-server ./build -p 3000",
+    "sync": "npm run build && npx cap sync",
+    "ios": "npm run build && npx cap run ios",
+    "ios-open": "npm run build && npx cap open ios",
     "test": "react-scripts test"
   },
   "eslintConfig": {
