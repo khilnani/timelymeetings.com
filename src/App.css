@@ -1,38 +1,81 @@
-.App {
-  text-align: center;
+
+.meetingTime {
+  margin: 20px 0px 10px 0px;  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.tinyText {
+  font-weight: 500;
+  font-size: 11px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.label {
+  font-weight: 400;
+  font-size: 15px;
+  margin: 40px 0px 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.checkbox {
+  background-color: #00816a;
+  border-radius: 3px;
+  border: 0px;
   color: white;
+  margin: 2px;
+  padding: 5px 10px 5px 10px;
+  text-align: center;
+  width: 15px;
+  height: 15px;
 }
 
-.App-link {
-  color: #61dafb;
+.button {
+  background-color: #00816a;
+  border-radius: 5px;
+  border: 0px;
+  color: white;
+  margin: 2px;
+  padding: 5px 10px 5px 10px;
+  text-align: center;
+  font-size: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.select {
+  background-color: #00816a;
+  border-radius: 5px;
+  border: 0px;
+  color: white;
+  margin: 2px;
+  padding: 5px;
+
+  text-align: center;
+  font-size: 15px;
+}
+
+#clockdiv {
+  font-family: sans-serif;
+  color: #fff;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 30px;
+}
+
+#clockdiv > div {
+  padding: 10px;
+  margin: 15px 0px 15px 0px;
+  border-radius: 5px;
+  background: #00bf96;
+  display: inline-block;
+}
+
+#clockdiv div > span {
+  padding: 15px;
+  border-radius: 5px;
+  width: 40px;
+  background: #00816a;
+  display: inline-block;
+}
+
+.clocktext {
+  padding-top: 5px;
+  font-size: 16px;
+  font-weight: 500;
 }
