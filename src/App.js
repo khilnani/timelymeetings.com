@@ -18,9 +18,6 @@ class App extends Component {
     super();
     this.state = { data: [] };
 
-    this.clearScheduledNotifications = Notifications.clearScheduledNotifications.bind(this);
-    this.sendTestNotification = Notifications.sendTestNotification.bind(this);
-
     this.onDurationChange = this.onDurationChange.bind(this);
     this.onSpeedyChange = this.onSpeedyChange.bind(this);
     this.onSlotChange = this.onSlotChange.bind(this);
@@ -258,15 +255,6 @@ class App extends Component {
               </select>
             </p>
           </div>
-
-          <p>
-            <button className="button" onClick={this.sendTestNotification}>
-              Test Notification
-            </button>
-            <button className="button" onClick={this.clearScheduledNotifications}>
-              Clear Notifications
-            </button>
-          </p>
 
           <p>
             <span className="tinyText" >

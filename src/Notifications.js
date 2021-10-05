@@ -25,7 +25,7 @@ async function checkCapacitorNotificationsAvailability () {
       return false;
     }
   } catch (error) {
-    alert(error);
+    console.error(error);
     return false;
   }
 }
@@ -55,7 +55,7 @@ async function sendCapacitorNotification(message, when) {
       console.log('Success', success);
       return true; 
     } catch (error) {
-      alert(error);
+      console.error(error);
       return false;
     }
   }
@@ -126,7 +126,7 @@ export async function clearScheduledNotifications() {
 export async function sendNotification(message) {
   console.log('sendNotification', message, 'NOW');
 
-  let when = new Date();
+  let when = new Date(Date.now() + 1000);
   let success = await sendCapacitorNotification(message, when);
   console.log('Capacitor Notifications Sent?', success);
 
