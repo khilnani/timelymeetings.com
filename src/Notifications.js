@@ -69,8 +69,11 @@ async function clearCapacitorNotifications() {
   let notifications = pending.notifications;
   console.log("Pending Capacitor Notifications", notifications);
 
-  await LocalNotifications.cancel(pending);  
-  console.log("Cleared Capacitor Notifications", notifications);  
+  if(notifications && notifications.length > 0) {
+    await LocalNotifications.cancel(pending);  
+    console.log("Cleared Capacitor Notifications", notifications);
+  }
+  
 
 }
 

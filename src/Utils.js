@@ -36,8 +36,8 @@ export function getNow() {
 //-------------------------------
 
 export function addMinutes(date, minutes) {
-  console.log("addMinutes");
-    return new Date(date.getTime() + minutes*60000);
+  //console.log("addMinutes");
+  return new Date(date.getTime() + minutes*60000);
 }
 
 //-------------------------------

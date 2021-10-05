@@ -23,8 +23,9 @@
     "serve":    "npx http-server ./build -p 3000",
     "serve-gh": "npx http-server ./docs -p 3000",
     "sync":     "npx cap sync",
-    "ios":      "npm run sync && npx cap run ios",
-    "ios-open": "npm run sync && npx cap open ios",
+    "ios":      "npx cap run ios",
+    "ios-open": "npx cap open ios",
+    "commit": "git add build/** && git add docs/**",
     "test":     "react-scripts test"
   },
   "eslintConfig": {

@@ -7,8 +7,12 @@ import * as Utils from './Utils'
 import * as Notifications from './Notifications'
 
 let timeInterval = undefined;
-let notificationWarningSent = false
-let notificationFinalSent = false
+let notificationWarningSentOrScheduled = false
+let notificationFinalSentOrScheduled = false
+
+const message_warning = 'Your meeting will end within 5 minutes';
+const message_end = 'Your meeting has ended';
+const browser_title = 'Timely Meetings | Meeting Countdown Timer';
 
 class App extends Component {
 
@@ -33,20 +37,35 @@ class App extends Component {
   
   //-------------------------------
   
-  async initializeClock(id, endtime) {
+  async initializeClock(id, endTime) {
     console.log('initializeClock');
 
     clearInterval(timeInterval);
-    notificationWarningSent = false;
-    notificationFinalSent = false;
+    notificationWarningSentOrScheduled = false;
+    notificationFinalSentOrScheduled = false;
+
+    // pre-schedule notifications
+    // if not successful send in real time
+    await Notifications.clearScheduledNotifications();
+
+    let warningTime = new Date(Date.parse(endTime) - 5 * 60 * 1000);
+    if (await Notifications.scheduleNotification(message_warning, warningTime) ) {
+      notificationWarningSentOrScheduled = true;
+    }
+    if (await Notifications.scheduleNotification(message_end, endTime) ) {
+      notificationFinalSentOrScheduled = true;
+    }
+
+    console.log('notificationWarningSentOrScheduled', notificationWarningSentOrScheduled);
+    console.log('notificationFinalSentOrScheduled', notificationFinalSentOrScheduled);
   
     const clock = document.getElementById(id);
     const hoursSpan = clock.querySelector(".hours");
     const minutesSpan = clock.querySelector(".minutes");
     const secondsSpan = clock.querySelector(".seconds");
 
-    function getTimeRemaining(endtime) {
-      const total = Date.parse(endtime) - Date.parse(new Date());
+    function getTimeRemaining(endTime) {
+      const total = Date.parse(endTime) - Date.parse(new Date());
       const seconds = Math.floor((total / 1000) % 60);
       const minutes = Math.floor((total / 1000 / 60) % 60);
       const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
@@ -62,7 +81,7 @@ class App extends Component {
     }
   
     async function updateClock() {
-      const t = getTimeRemaining(endtime);
+      const t = getTimeRemaining(endTime);
       console.log("updateClock");
       //console.log("updateClock", t.total);
   
@@ -70,24 +89,32 @@ class App extends Component {
         document.body.style.backgroundColor = "#00ECB9"; // default
       } else {
         document.body.style.backgroundColor = "#FBF719"; // yellow
-        if (!notificationWarningSent) {
-          notificationWarningSent = true
-          await Notifications.sendNotification('Your meeting will end within 5 minutes');
+        if (!notificationWarningSentOrScheduled) {
+          notificationWarningSentOrScheduled = true
+          await Notifications.sendNotification(message_warning);
         }
       }
   
       if (t.total <= 0) {
         clearInterval(timeInterval);
         document.body.style.backgroundColor = "#FFFFFF"; // white
-        if (!notificationFinalSent) {
-          notificationFinalSent = true
-          await Notifications.sendNotification('Your meeting has ended');
+        if (!notificationFinalSentOrScheduled) {
+          notificationFinalSentOrScheduled = true
+          await Notifications.sendNotification(message_end);
         }
       }
   
-      hoursSpan.innerHTML = ("0" + t.hours).slice(-2);
-      minutesSpan.innerHTML = ("0" + t.minutes).slice(-2);
-      secondsSpan.innerHTML = ("0" + t.seconds).slice(-2);
+      let h = ("0" + t.hours).slice(-2);
+      let m = ("0" + t.minutes).slice(-2);
+      let s = ("0" + t.seconds).slice(-2);
+
+      hoursSpan.innerHTML = h;
+      minutesSpan.innerHTML = m;
+      secondsSpan.innerHTML = s;
+
+      if (document && document['title']) {
+        document.title = h + ':' + m + ':' + s + ' - ' + browser_title;
+      }
     }
   
     await updateClock();
@@ -155,8 +182,10 @@ class App extends Component {
   
     let meetingEndTime = new Date(Date.parse(meetingStartTime) + meetingDuration * 60 * 1000);
   
+    // update display
     this.updateMeetingTime(meetingStartTime, meetingEndTime);
-  
+
+    // start the timer
     await this.initializeClock("clockdiv", meetingEndTime);
   
   }
