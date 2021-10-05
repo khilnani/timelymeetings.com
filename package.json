@@ -17,14 +17,15 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "BUILD_PATH='./build' react-scripts build",
-    "gh-pages": "BUILD_PATH='./build' react-scripts build",
-    "serve": "npm run build && npx http-server ./build -p 3000",
-    "sync": "npm run build && npx cap sync",
-    "ios": "npm run build && npx cap run ios",
+    "start":    "react-scripts start",
+    "build":    "BUILD_PATH='./build' react-scripts build",
+    "build-gh": "BUILD_PATH='./docs' react-scripts build",
+    "serve":    "npm run build && npx http-server ./build -p 3000",
+    "serve-gh": "npm run build-gh && npx http-server ./docs -p 3000",
+    "sync":     "npm run build && npx cap sync",
+    "ios":      "npm run build && npx cap run ios",
     "ios-open": "npm run build && npx cap open ios",
-    "test": "react-scripts test"
+    "test":     "react-scripts test"
   },
   "eslintConfig": {
     "extends": [

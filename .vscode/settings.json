@@ -1,5 +1,7 @@
 {
     "editor.fontFamily": "Monaco",
-    "editor.fontSize": 11,
-    "git.ignoreLimitWarning": true
+    "editor.fontSize": 10,
+    "git.ignoreLimitWarning": true,
+    "editor.tabSize": 2,
+    "editor.minimap.enabled": false
 }
