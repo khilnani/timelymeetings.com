@@ -17,17 +17,17 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start":    "react-scripts start",
-    "build":    "BUILD_PATH='./build' react-scripts build",
-    "build-gh": "BUILD_PATH='./docs' react-scripts build",
+    "start": "craco start",
+    "build": "BUILD_PATH='./build' craco build",
+    "build-gh": "BUILD_PATH='./docs' craco build",
     "build-all": "npm run build && npm run build-gh",
-    "serve":    "npx http-server ./build -p 3000",
+    "serve": "npx http-server ./build -p 3000",
     "serve-gh": "npx http-server ./docs -p 3000",
-    "sync":     "npx cap sync",
-    "ios":      "npx cap run ios",
+    "sync": "npx cap sync",
+    "ios": "npx cap run ios",
     "ios-open": "npx cap open ios",
     "git-add": "git add build/** && git add docs/** && git add public/** && git add ipas/**",
-    "test":     "react-scripts test"
+    "test": "craco test"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +48,8 @@
     ]
   },
   "devDependencies": {
-    "http-server": "^13.0.2"
+    "@craco/craco": "^6.3.0",
+    "http-server": "^13.0.2",
+    "typescript": "^4.4.3"
   }
 }
