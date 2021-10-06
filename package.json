@@ -25,7 +25,7 @@
     "sync":     "npx cap sync",
     "ios":      "npx cap run ios",
     "ios-open": "npx cap open ios",
-    "git-add": "git add build/** && git add docs/** && git add public/**",
+    "git-add": "git add build/** && git add docs/** && git add public/** && git add ipas/**",
     "test":     "react-scripts test"
   },
   "eslintConfig": {

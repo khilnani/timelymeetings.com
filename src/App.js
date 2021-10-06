@@ -320,7 +320,7 @@ class App extends Component {
             (!isNative) && 
             <p>
               <span className="tinyText" >
-                <a href="https://github.com/khilnani/timelymeetings.com" target="_blank" rel="noreferrer">Github</a> | <a href="https://khilnani.org" target="_blank"  rel="noreferrer">Nik Khilnani</a>
+                <a href="https://khilnani.org" target="_blank"  rel="noreferrer">Nik Khilnani</a>
               </span>
             </p>
           }
