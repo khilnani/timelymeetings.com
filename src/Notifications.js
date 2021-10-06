@@ -1,63 +1,56 @@
 import { Capacitor } from '@capacitor/core';
 import { LocalNotifications } from '@capacitor/local-notifications';
 
+///////////////////////////////////////////////////////////////
 
-export async function checkNotificationsAvailability () {
-  console.log('checkNotificationsAvailability');
-  let isCapacitorPluginAvailable = await Capacitor.isPluginAvailable('LocalNotifications');
+async function checkNativeNotificationsAvailability () {
+  console.log('checkNativeNotificationsAvailability');
+  
+  // web, ios, android?
+  let isNative = (Capacitor.getPlatform() !== "web");
+  console.log('isNative?', isNative);
+
+  // Capacitor?
+  let isCapacitorPluginAvailable = await Capacitor.isPluginAvailable('LocalNotifications');    
   console.log('isCapacitorPluginAvailable?', isCapacitorPluginAvailable);
 
-  // https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification
-  // https://web.dev/tags/notifications/
-  // https://notifications.spec.whatwg.org/
-  var NotificationIsSupported = ('Notification' in window);
-  console.log('Browser Notifications supported?', NotificationIsSupported);
-
-
-  // https://web.dev/notification-triggers/
-  if (NotificationIsSupported && 'showTrigger' in Notification.prototype) {
-    console.log("Browser Notification Triggers supported?", true);
-  } else {
-    console.log("Browser Notification Triggers supported?", false);
-  }
-
+  let avail = false;
+  //avail = (isCapacitorPluginAvailable);
+  avail = (isNative && isCapacitorPluginAvailable);
+  console.log('checkNativeNotificationsAvailability?', avail);
+  return avail;
 }
 
-async function checkCapacitorNotificationsAvailability () {
-  console.log('checkCapacitorNotificationsAvailability');
+async function requestNativeNotificationsPermissions () {
+  console.log('requestNativeNotificationsPermissions');
+
+  let avail = false;
 
   try {
-    let isCapacitorPluginAvailable = await Capacitor.isPluginAvailable('LocalNotifications');
-    console.log('isCapacitorPluginAvailable?', isCapacitorPluginAvailable);
-    
-    if ( isCapacitorPluginAvailable ) {
-      let p = await LocalNotifications.checkPermissions()
-      if (p.display === "granted") {
-        return true;
-      } else {
-        let a = await LocalNotifications.requestPermissions()
-        if (a.display === "granted") {
-          return true;
-        } else {
-          return false;
-        }
-      }
+    let p = await LocalNotifications.checkPermissions();
+    if (p.display === "granted") {
+      avail = true;
     } else {
-      return false;
+      let a = await LocalNotifications.requestPermissions();
+      if (a.display === "granted") {
+        avail = true;
+      }
     }
   } catch (error) {
     console.error(error);
-    return false;
   }
+
+  console.log('requestNativeNotificationsPermissions - avail', avail);  
+  return avail;
 }
 
-async function sendCapacitorNotification(message, when) {
-  console.log('sendCapacitorNotification', message, when);
+async function sendNativeNotification(message, when) {
+  console.log('sendNativeNotification', message, when);
 
-  let isCapacitorNotificationsAvailable = await checkCapacitorNotificationsAvailability();
-  console.log('isCapacitorNotificationsAvailable?', isCapacitorNotificationsAvailable);
+  let isNativeNotificationsAvailable = await checkNativeNotificationsAvailability();
+  console.log('isNativeNotificationsAvailable?', isNativeNotificationsAvailable);
 
-  if(isCapacitorNotificationsAvailable) {
+  if(isNativeNotificationsAvailable && await requestNativeNotificationsPermissions()) {
     try {
       let success = await LocalNotifications.schedule({
         notifications: [
@@ -83,102 +76,161 @@ async function sendCapacitorNotification(message, when) {
   return false;
 }
 
-export async function getPendingNotifications() {
-  let pending = await LocalNotifications.getPending();
-  let notifications = pending.notifications;
-  console.log("Pending Capacitor Notifications", notifications);
-  return pending;
-
-}
-
-async function clearCapacitorNotifications() {
-  console.log('clearCapacitorNotifications');
+async function clearNativeNotifications() {
+  console.log('clearNativeNotifications');
 
   let pending = await getPendingNotifications();
   let notifications = pending.notifications;
 
   if(notifications && notifications.length > 0) {
     await LocalNotifications.cancel(pending);  
-    console.log("Cleared Capacitor Notifications", notifications);
+    console.log("Cleared Native Notifications", notifications);
   }
-  
-
 }
+
 
 ///////////////////////////////////////////////////////////////
 
-async function sendDefaultNotification(message, when) {
+async function checkBrowserNotificationsAvailability () {
+  console.log('checkBrowserNotificationsAvailability');
 
-  alert(message);
-
-/*let opts = {
-  requireInteraction: true
+  // https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification
+  // https://web.dev/tags/notifications/
+  // https://notifications.spec.whatwg.org/
+  let avail = ('Notification' in window);
+  console.log('Browser Notification supported?', avail);
+  return avail;
 }
 
-  // Let's check if the browser supports notifications
-  if (!("Notification" in window)) {
-    console.log('Browser Notifications not supported.');
-    alert(message);
+async function checkBrowserNotificationsSchedulingAvailability () {
+  console.log('checkBrowserNotificationsSchedulingAvailability');
+
+  let NotificationIsSupported = await checkBrowserNotificationsAvailability();
+  let avail = false;
+
+  // https://web.dev/notification-triggers/
+  avail = (NotificationIsSupported && 'showTrigger' in Notification.prototype);
+  console.log("Browser Notification Triggers supported?", avail);
+  return avail;
+}
+
+async function requestBrowserNotificationsPermissions () {
+  console.log('requestBrowserNotificationsPermissions');
+
+  if (checkBrowserNotificationsAvailability()) {
+    if (Notification.permission !== "granted") {
+      console.log('Browser Notification permissions being asked.');
+      let permission = await Notification.requestPermission();
+      console.log('Browser Notification permission', permission);     
+    }
   }
-  // Let's check whether notification permissions have already been granted
-  else if (Notification.permission === "granted") {
-    // If it's okay let's create a notification
-    console.log('Browser Notifications already granted, attempting to send.');
+
+  let avail = (Notification.permission === 'granted');
+  console.log('requestBrowserNotificationsPermissions?', avail);
+  return avail;
+}
+
+async function sendBrowserNotification(message, when) {
+  console.log('sendBrowserNotification', message, when);
+
+  if (checkBrowserNotificationsAvailability() && await requestBrowserNotificationsPermissions()) {
+    console.log('Browser Notification permissions already granted, attempting to send.');
+
+    let opts = {
+      requireInteraction: true
+    }
+
     var notification = new Notification(message, opts);
-  }
-
-  // Otherwise, we need to ask the user for permission
-  else if (Notification.permission !== "denied") {
-    console.log('Browser Notifications permissions being re-asked.');
-    Notification.requestPermission().then(function(permission) {
-      // If the user accepts, let's create a notification
-      if (permission === "granted") {
-        console.log('Browser Notifications granted after being initially denied, attempting to send.');
-        var notification = new Notification(message, opts);
-      } else {
-        console.log('Browser Notifications denied after ask.');
-        alert(message);
-      }
-    });
+    console.log('Browser Notification sent', notification);
+    
   } else {
-    console.log('Browser Notifications denied.');
+    console.log('Browser Notification permissions denied.');
     alert(message);
   }
-  */
+
 }
 
-///////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
+export async function checkNotificationsAvailability () {
+  console.log('checkNotificationsAvailability');
+
+  let n = await checkNativeNotificationsAvailability();
+  let b = await checkBrowserNotificationsAvailability();
+  await checkBrowserNotificationsSchedulingAvailability();
+  
+  if(n) {
+    await requestNativeNotificationsPermissions();
+  } else if(b) {
+    await requestBrowserNotificationsPermissions();
+  }
+}
+
+export async function getPendingNotifications() {
+  console.log('getPendingNotifications');
+
+  let pending = {
+    notifications: []
+  }
+  if (await checkNativeNotificationsAvailability()) {
+    pending = await LocalNotifications.getPending();
+    let notifications = pending.notifications;
+    console.log("Pending Native Notifications", notifications);
+  }
+  if (await checkBrowserNotificationsSchedulingAvailability()) {
+    console.log('getPendingNotifications - Not implemented for Browser');
+  }
+  return pending;
+}
 
 export async function clearScheduledNotifications() {
-  console.log('clearNotifications');
-  await clearCapacitorNotifications();
+  console.log('clearScheduledNotifications');
+  if (await checkNativeNotificationsAvailability()) {
+    await clearNativeNotifications();
+  }
+  if (await checkBrowserNotificationsSchedulingAvailability()) {
+    console.log('clearScheduledNotifications - Not implemented for Browser');
+  }
 }
+
 
 export async function sendNotification(message) {
   console.log('sendNotification', message, 'NOW');
 
   let when = new Date(Date.now() + 1000);
-  let success = await sendCapacitorNotification(message, when);
-  console.log('Capacitor Notifications Sent?', success);
+  let success = await sendNativeNotification(message, when);
+  console.log('Native Notifications Sent?', success);
 
   if (!success) {
-    console.log('Attempting Default Notification.');
-    sendDefaultNotification(message, when);
+    console.log('Attempting Browser Notification.');
+    sendBrowserNotification(message, when);
   }
 }
 
 export async function scheduleNotification(message, when) {
   console.log('scheduleNotification', message, when);
 
-  let success = await sendCapacitorNotification(message, when);
-  console.log('Capacitor Notifications scheduled?', success);
+  let success = false;
 
+  if( await checkNativeNotificationsAvailability() ) {
+    success = await sendNativeNotification(message, when);  
+  }
+
+  if( await checkBrowserNotificationsSchedulingAvailability() ) {
+    console.log('scheduleNotification - Not implemented for Browser');
+  }
+
+  console.log('scheduleNotification?', success);
   return success;
 }
 
 export async function sendTestNotification() {
   console.log('sendTesteNotification (5s)');
+
   let when = new Date(Date.now() + 1000 * 5);
   let message = when.toLocaleTimeString();
+
   await scheduleNotification(message, when);
 }

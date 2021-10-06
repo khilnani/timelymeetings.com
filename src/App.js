@@ -74,7 +74,6 @@ class App extends Component {
     // Debug if anything pending
     await Notifications.getPendingNotifications();
 
-
     function setClock(hours, minutes, seconds) {
       //console.log("setClock", hours, minutes, seconds);
 
@@ -259,7 +258,7 @@ class App extends Component {
 
   render() {
     // web, ios, android.
-    let isNative = Capacitor.getPlatform();
+    let isNative = (Capacitor.getPlatform() !== "web");
 
     return (
         <div className="content">
@@ -317,12 +316,13 @@ class App extends Component {
             </p>
           </div>
 
-          { (isNative === "web") && 
-          <p>
-            <span className="tinyText" >
-              <a href="https://github.com/khilnani/timelymeetings.com" target="_blank" rel="noreferrer">Github</a> | <a href="https://khilnani.org" target="_blank"  rel="noreferrer">Nik Khilnani</a>
-            </span>
-          </p>
+          { 
+            (!isNative) && 
+            <p>
+              <span className="tinyText" >
+                <a href="https://github.com/khilnani/timelymeetings.com" target="_blank" rel="noreferrer">Github</a> | <a href="https://khilnani.org" target="_blank"  rel="noreferrer">Nik Khilnani</a>
+              </span>
+            </p>
           }
 
         </div>
