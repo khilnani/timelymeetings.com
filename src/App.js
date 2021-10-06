@@ -6,11 +6,13 @@ import * as State from './State'
 import * as Utils from './Utils'
 import * as Notifications from './Notifications'
 
+import { Capacitor } from "@capacitor/core";
+
 let timeInterval = undefined;
 let notificationWarningSentOrScheduled = false
 let notificationFinalSentOrScheduled = false
 
-const message_warning = 'Your meeting will end within 5 minutes';
+const message_warning = 'Your meeting will end in 5 minutes';
 const message_end = 'Your meeting has ended';
 const browser_title = 'Timely Meetings | Meeting Countdown Timer';
 
@@ -32,11 +34,10 @@ class App extends Component {
   
   // Based on https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
   // CSS from https://stackoverflow.com/questions/7082257/css-how-to-skin-a-select-box-with-css
-  
 
-  
+
   //-------------------------------
-  
+
   async initializeClock(id, endTime) {
     console.log('initializeClock');
 
@@ -44,25 +45,56 @@ class App extends Component {
     notificationWarningSentOrScheduled = false;
     notificationFinalSentOrScheduled = false;
 
-    // pre-schedule notifications
+    // schedule notifications
     // if not successful send in real time
     await Notifications.clearScheduledNotifications();
 
     let warningTime = new Date(Date.parse(endTime) - 5 * 60 * 1000);
-    if (await Notifications.scheduleNotification(message_warning, warningTime) ) {
+    if (warningTime > Date.now()) {
+      if (await Notifications.scheduleNotification(message_warning, warningTime) ) {
+        notificationWarningSentOrScheduled = true;
+      }
+    } else {
+      console.log('End time is sooner than the warning time, skipping warning notification.');
       notificationWarningSentOrScheduled = true;
     }
-    if (await Notifications.scheduleNotification(message_end, endTime) ) {
+    
+    if(endTime > Date.now() ) {
+      if (await Notifications.scheduleNotification(message_end, endTime) ) {
+        notificationFinalSentOrScheduled = true;
+      }
+    } else {
+      console.log('End time has past, skipping end notification.');
       notificationFinalSentOrScheduled = true;
     }
 
     console.log('notificationWarningSentOrScheduled', notificationWarningSentOrScheduled);
     console.log('notificationFinalSentOrScheduled', notificationFinalSentOrScheduled);
   
-    const clock = document.getElementById(id);
-    const hoursSpan = clock.querySelector(".hours");
-    const minutesSpan = clock.querySelector(".minutes");
-    const secondsSpan = clock.querySelector(".seconds");
+    // Debug if anything pending
+    await Notifications.getPendingNotifications();
+
+
+    function setClock(hours, minutes, seconds) {
+      //console.log("setClock", hours, minutes, seconds);
+
+      const clock = document.getElementById(id);
+      const hoursSpan = clock.querySelector(".hours");
+      const minutesSpan = clock.querySelector(".minutes");
+      const secondsSpan = clock.querySelector(".seconds");
+
+      let h = ("0" + hours).slice(-2);
+      let m = ("0" + minutes).slice(-2);
+      let s = ("0" + seconds).slice(-2);
+
+      hoursSpan.innerHTML = h;
+      minutesSpan.innerHTML = m;
+      secondsSpan.innerHTML = s;
+
+      if (document && document['title']) {
+        document.title = h + ':' + m + ':' + s + ' - ' + browser_title;
+      }
+    }
 
     function getTimeRemaining(endTime) {
       const total = Date.parse(endTime) - Date.parse(new Date());
@@ -82,8 +114,10 @@ class App extends Component {
   
     async function updateClock() {
       const t = getTimeRemaining(endTime);
-      console.log("updateClock");
+
       //console.log("updateClock", t.total);
+      console.log("updateClock");
+      
   
       if (t.total > 5 * 60 * 1000) {
         document.body.style.backgroundColor = "#00ECB9"; // default
@@ -94,27 +128,21 @@ class App extends Component {
           await Notifications.sendNotification(message_warning);
         }
       }
-  
-      if (t.total <= 0) {
+
+      if (t.total > 0) {
+        setClock(t.hours, t.minutes, t.seconds);
+      } else {
         clearInterval(timeInterval);
+        
+        setClock(0, 0, 0);
         document.body.style.backgroundColor = "#FFFFFF"; // white
+
         if (!notificationFinalSentOrScheduled) {
           notificationFinalSentOrScheduled = true
           await Notifications.sendNotification(message_end);
         }
       }
-  
-      let h = ("0" + t.hours).slice(-2);
-      let m = ("0" + t.minutes).slice(-2);
-      let s = ("0" + t.seconds).slice(-2);
 
-      hoursSpan.innerHTML = h;
-      minutesSpan.innerHTML = m;
-      secondsSpan.innerHTML = s;
-
-      if (document && document['title']) {
-        document.title = h + ':' + m + ':' + s + ' - ' + browser_title;
-      }
     }
   
     await updateClock();
@@ -181,11 +209,11 @@ class App extends Component {
     }
   
     let meetingEndTime = new Date(Date.parse(meetingStartTime) + meetingDuration * 60 * 1000);
+    console.log('meetingEndTime', meetingEndTime);
   
     // update display
     this.updateMeetingTime(meetingStartTime, meetingEndTime);
 
-    // start the timer
     await this.initializeClock("clockdiv", meetingEndTime);
   
   }
@@ -229,6 +257,9 @@ class App extends Component {
   //-------------------------------
 
   render() {
+    // web, ios, android.
+    let isNative = Capacitor.getPlatform();
+
     return (
         <div className="content">
 
@@ -285,11 +316,13 @@ class App extends Component {
             </p>
           </div>
 
+          { (isNative === "web") && 
           <p>
             <span className="tinyText" >
-              <a href="https://github.com/khilnani/timelymeetings.com" target="_blank" rel="noreferrer">Github</a> | <a href="https://khilnani.org" target="_blank">Nik Khilnani</a>
+              <a href="https://github.com/khilnani/timelymeetings.com" target="_blank" rel="noreferrer">Github</a> | <a href="https://khilnani.org" target="_blank"  rel="noreferrer">Nik Khilnani</a>
             </span>
           </p>
+          }
 
         </div>
     );

@@ -29,6 +29,8 @@ Mobile app built using [React](https://reactjs.org) and [Ionic Capacitor](https:
 - https://capacitorjs.com/docs/web
 - https://capacitorjs.com/docs/apis
   - https://capacitorjs.com/docs/apis/local-notifications
+- https://appiconmaker.co/Home/Index/e21c03d0-8767-4304-91d1-710f10958353
+
 
 ## Known Issues
 
