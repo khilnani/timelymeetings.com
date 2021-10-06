@@ -142,7 +142,6 @@ class App extends Component {
           await Notifications.sendNotification(message_end);
         }
       }
-
     }
   
     await updateClock();
