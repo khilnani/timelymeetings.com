@@ -247,6 +247,8 @@ class App extends Component {
   async componentDidMount() {
     console.log("componentDidMount");
 
+    await Notifications.checkNotificationsAvailability();
+
     this.updateStartTimeOptions();
     State.updateFromLocalStorage(this.updateStartTimeOptions);
     await this.updateCountdown();

@@ -2,6 +2,28 @@ import { Capacitor } from '@capacitor/core';
 import { LocalNotifications } from '@capacitor/local-notifications';
 
 
+export async function checkNotificationsAvailability () {
+  console.log('checkNotificationsAvailability');
+  let isCapacitorPluginAvailable = await Capacitor.isPluginAvailable('LocalNotifications');
+  console.log('isCapacitorPluginAvailable?', isCapacitorPluginAvailable);
+
+  // https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification
+  // https://web.dev/tags/notifications/
+  // https://notifications.spec.whatwg.org/
+  var NotificationIsSupported = ('Notification' in window);
+  console.log('Browser Notifications supported?', NotificationIsSupported);
+
+
+  // https://web.dev/notification-triggers/
+  if (NotificationIsSupported && 'showTrigger' in Notification.prototype) {
+    console.log("Browser Notification Triggers supported?", true);
+  } else {
+    console.log("Browser Notification Triggers supported?", false);
+  }
+
+}
+
+
 async function checkCapacitorNotificationsAvailability () {
   console.log('checkCapacitorNotificationsAvailability');
 
