@@ -20,6 +20,7 @@
     "start":    "react-scripts start",
     "build":    "BUILD_PATH='./build' react-scripts build",
     "build-gh": "BUILD_PATH='./docs' react-scripts build",
+    "build-all": "npm run build && npm run build-gh",
     "serve":    "npx http-server ./build -p 3000",
     "serve-gh": "npx http-server ./docs -p 3000",
     "sync":     "npx cap sync",
