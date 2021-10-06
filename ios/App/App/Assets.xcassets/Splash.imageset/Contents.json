@@ -29,6 +29,21 @@
       "filename" : "splash-1125x2436.png",
       "idiom" : "iphone",
       "scale" : "3x"
+    },
+    {
+      "filename" : "logo-1.png",
+      "idiom" : "ipad",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "logo.png",
+      "idiom" : "ipad",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "1024.png",
+      "idiom" : "watch",
+      "scale" : "2x"
     }
   ],
   "info" : {
