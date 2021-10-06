@@ -23,7 +23,6 @@ export async function checkNotificationsAvailability () {
 
 }
 
-
 async function checkCapacitorNotificationsAvailability () {
   console.log('checkCapacitorNotificationsAvailability');
 

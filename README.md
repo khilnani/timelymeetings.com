@@ -37,6 +37,8 @@ Mobile app built using [React](https://reactjs.org) and [Ionic Capacitor](https:
 - Background tasks with capacitor
   - https://github.com/ionic-team/capacitor/issues/3032
   - Alt - https://github.com/robingenz/capacitor-background-task
+- Black splash screen
+  - https://github.com/ionic-team/capacitor/issues/3589
 
 
 ## Miscellaneous 
