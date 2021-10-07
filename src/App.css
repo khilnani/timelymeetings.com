@@ -3,10 +3,8 @@
   margin: 20px 0px 10px 0px;  
 }
 
-.refreshIcon {
+.icon {
   color: #00816a;
-  height: 20px;
-  width: 20px;
   position: relative;
   bottom: -9px;
   margin: 0 0 0 10px;

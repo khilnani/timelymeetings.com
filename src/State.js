@@ -37,6 +37,19 @@ export function getUserOptions () {
   return o;
 }
 
+export function savePausedStateToLocalStorage(paused) {
+  console.log("savePausedStateToLocalStorage", paused);
+  localStorage.setItem('paused', paused)
+}
+
+export function getPausedStateToLocalStorage() {
+  console.log("savePausedStateToLocalStorage");
+
+  let paused = localStorage.getItem('paused')
+  console.log('savePausedStateToLocalStorage - paused', paused, typeof(paused));
+  return paused;
+}
+
 export function saveDurationToLocalStorage() {
   console.log("saveDurationToLocalStorage");
 

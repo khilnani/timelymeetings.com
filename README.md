@@ -25,10 +25,20 @@ Mobile app built using [React](https://reactjs.org) and [Ionic Capacitor](https:
 
 ## Links
 
+Capacitor 
+
 - https://capacitorjs.com/docs/getting-started
 - https://capacitorjs.com/docs/web
 - https://capacitorjs.com/docs/apis
   - https://capacitorjs.com/docs/apis/local-notifications
+- https://capacitorjs.com/docs/apis/app#statechangelistener
+
+Icons
+
+- https://react-ionicons.netlify.app/
+
+Utilities
+
 - https://appiconmaker.co/Home/Index/e21c03d0-8767-4304-91d1-710f10958353
 - https://realfavicongenerator.net/
 - https://appicon.co/

@@ -3,6 +3,10 @@ import { LocalNotifications } from '@capacitor/local-notifications';
 
 ///////////////////////////////////////////////////////////////
 
+let enabled = true;
+
+///////////////////////////////////////////////////////////////
+
 async function checkNativeNotificationsAvailability () {
   console.log('checkNativeNotificationsAvailability');
   
@@ -156,6 +160,17 @@ async function sendBrowserNotification(message, when) {
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
+export async function pauseNotifications() {
+  console.log('pauseNotifications - current', enabled);
+  enabled = false;
+  clearScheduledNotifications();
+}
+
+export async function enableNotifications() {
+  console.log('enableNotifications - current', enabled);
+  enabled = true;
+}
+
 export async function checkNotificationsAvailability () {
   console.log('checkNotificationsAvailability');
 
@@ -199,32 +214,34 @@ export async function clearScheduledNotifications() {
 
 
 export async function sendNotification(message) {
-  console.log('sendNotification', message, 'NOW');
+  console.log('sendNotification', message, 'NOW', 'enabled', enabled);
 
-  let when = new Date(Date.now() + 1000);
-  let success = await sendNativeNotification(message, when);
-  console.log('Native Notifications Sent?', success);
+  if(enabled) {
+    let when = new Date(Date.now() + 1000);
+    let success = await sendNativeNotification(message, when);
+    console.log('Native Notifications Sent?', success);
 
-  if (!success) {
-    console.log('Attempting Browser Notification.');
-    sendBrowserNotification(message, when);
+    if (!success) {
+      console.log('Attempting Browser Notification.');
+      sendBrowserNotification(message, when);
+    }
   }
 }
 
 export async function scheduleNotification(message, when) {
-  console.log('scheduleNotification', message, when);
+  console.log('scheduleNotification', message, when, 'enabled', enabled);
 
   let success = false;
 
-  if( await checkNativeNotificationsAvailability() ) {
-    success = await sendNativeNotification(message, when);  
+  if (enabled) {
+    if( await checkNativeNotificationsAvailability() ) {
+      success = await sendNativeNotification(message, when);  
+    }
+    if( await checkBrowserNotificationsSchedulingAvailability() ) {
+      console.log('scheduleNotification - Not implemented for Browser');
+    }
+    console.log('scheduleNotification?', success);
   }
-
-  if( await checkBrowserNotificationsSchedulingAvailability() ) {
-    console.log('scheduleNotification - Not implemented for Browser');
-  }
-
-  console.log('scheduleNotification?', success);
   return success;
 }
 

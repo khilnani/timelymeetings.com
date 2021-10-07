@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-
-import { RefreshCircle } from 'react-ionicons'
-
+import { App as NativeApp } from '@capacitor/app';
+import { RefreshCircle, StopCircle, PlayCircle } from 'react-ionicons'
 
 import './App.css';
 
@@ -9,8 +8,9 @@ import * as State from './State'
 import * as Utils from './Utils'
 import * as Notifications from './Notifications'
 
-//import { Capacitor } from "@capacitor/core";
 
+
+import './App.css';
 let timeInterval = undefined;
 let notificationWarningSentOrScheduled = false
 let notificationFinalSentOrScheduled = false
@@ -19,19 +19,35 @@ const message_warning = 'Your meeting will end in 5 minutes';
 const message_end = 'Your meeting has ended';
 const browser_title = 'Timely Meetings | Meeting Countdown Timer';
 
+
+
+NativeApp.addListener('appStateChange', ({ isActive }) => {
+  console.log('App state changed. Is active?', isActive);
+});
+
+NativeApp.addListener('appUrlOpen', data => {
+  console.log('App opened with URL:', data);
+});
+
+NativeApp.addListener('appRestoredResult', data => {
+  console.log('Restored state:', data);
+});
+
 class App extends Component {
 
   //-------------------------------
 
   constructor() {
     super();
-    this.state = { data: [] };
+    this.state = {
+      paused: false
+    };
 
     this.onDurationChange = this.onDurationChange.bind(this);
     this.onSpeedyChange = this.onSpeedyChange.bind(this);
     this.onSlotChange = this.onSlotChange.bind(this);
     this.onRefreshClick = this.onRefreshClick.bind(this);
-
+    this.togglePause = this.togglePause.bind(this);
   }
 
   //-------------------------------
@@ -252,16 +268,45 @@ class App extends Component {
     await this.updateCountdown();
   }
 
+  async togglePause() {
+    console.log("togglePause");
+
+    this.setState( function (state) {
+      console.log("Current paused state", state.paused);
+      let paused = !state.paused;
+      console.log("Changing paused state to", paused);
+      return {paused: paused};
+    });
+
+    if (this.state.paused) {
+      await Notifications.pauseNotifications();
+    } else {
+      await Notifications.enableNotifications();
+      await this.updateCountdown();
+    }
+
+    State.savePausedStateToLocalStorage(this.state.paused);
+  }
   //-------------------------------
 
   async componentDidMount() {
     console.log("componentDidMount");
 
     await Notifications.checkNotificationsAvailability();
-
+    
     this.updateStartTimeOptions();
     State.updateFromLocalStorage(this.updateStartTimeOptions);
     await this.updateCountdown();
+
+    this.setState(
+      {
+        paused: State.getPausedStateToLocalStorage()
+      }
+    );
+
+    if(this.state.paused) {
+      await Notifications.pauseNotifications();
+    }
   }
 
   //-------------------------------
@@ -304,13 +349,37 @@ class App extends Component {
               >
                 <option value="-1">Loading ...</option>
               </select>
-              <RefreshCircle className="refreshIcon"
+              <RefreshCircle
+              className="icon"
                 color={'#00816a'} 
-                title='Refresh'
+                title='Reset timer'
                 width='30px'
                 height='30px'
                 onClick={this.onRefreshClick}
               />
+              {
+                (this.state.paused) && 
+                  <PlayCircle
+                  className="icon"
+                  color={'#00816a'} 
+                  title='Enable notifications'
+                  height="30px"
+                  width="30px"
+                  onClick={this.togglePause}
+                />
+              }
+
+              {
+                (!this.state.paused) && 
+                <StopCircle
+                  className="icon"
+                  color={'#00816a'} 
+                  title='Stop notifications'
+                  height="30px"
+                  width="30px"
+                  onClick={this.togglePause}
+                />
+              }
             </p>
 
             <p>
@@ -331,6 +400,7 @@ class App extends Component {
               <input className="checkbox" type="checkbox" id="meetingSpeedy" name="meetingSpeedy"
                 onChange={this.onSpeedyChange}
               />
+
             </p>
 
             <p>
