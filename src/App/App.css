@@ -1,0 +1,128 @@
+
+.header {
+  position: relative;
+  left: 15px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;  
+  margin: 0 10px 0 0;
+  float: left;
+  position: relative;
+  bottom: 5px;
+}
+
+.headerText {
+  text-align: left;
+}
+
+.meetingTime {
+  margin: 20px 0px 10px 0px;  
+}
+
+.iconRefresh {
+  color: #00816a;
+  position: relative;
+  bottom: -9px;
+  margin: 0 0 0 10px;
+  cursor: pointer;
+}
+
+.iconNotifications {
+  color: #00816a;
+  position: relative;
+  bottom: -9px;
+  margin: 0 0 0 10px;
+  cursor: pointer;
+}
+
+#meetingSpeedyLabel {
+  margin: 0 5px 0 10px;
+}
+
+#meetingSpeedy{
+  position: relative;
+  bottom: -2px;
+}
+
+.tinyText {
+  font-weight: 500;
+  font-size: 11px;
+}
+
+.copyrightText {
+  opacity: 0.7;
+}
+
+.label {
+  font-weight: 400;
+  font-size: 15px;
+  margin: 40px 0px 20px;
+}
+
+.checkbox {
+  background-color: #00816a;
+  border-radius: 3px;
+  border: 0px;
+  color: white;
+  margin: 2px;
+  padding: 5px 10px 5px 10px;
+  text-align: center;
+  width: 15px;
+  height: 15px;
+}
+
+.button {
+  background-color: #00816a;
+  border-radius: 5px;
+  border: 0px;
+  color: white;
+  margin: 2px;
+  padding: 5px 10px 5px 10px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.select {
+  background-color: #00816a;
+  border-radius: 5px;
+  border: 0px;
+  color: white;
+  margin: 2px;
+  padding: 5px;
+
+  text-align: center;
+  font-size: 15px;
+}
+
+#clockdiv {
+  font-family: sans-serif;
+  color: #fff;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 30px;
+}
+
+#clockdiv > div {
+  padding: 10px;
+  margin: 15px 5px 15px 5px;
+  border-radius: 5px;
+  background: #00bf96;
+  display: inline-block;
+}
+
+#clockdiv div > span {
+  padding: 15px;
+  border-radius: 5px;
+  width: 40px;
+  background: #00816a;
+  display: inline-block;
+}
+
+.clocktext {
+  padding-top: 5px;
+  font-size: 16px;
+  font-weight: 500;
+}
