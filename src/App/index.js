@@ -274,7 +274,6 @@ class App extends Component {
   async onSlotChange() {
     console.log("onSlotChange");
 
-    this.updateStartTimeOptions();
     await this.updateCountdown();
   }
 

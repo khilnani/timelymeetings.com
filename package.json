@@ -21,6 +21,7 @@
   "scripts": {
     "start":              "BROWSER=edge craco start",
     "start-rs":           "BROWSER=edge react-scripts start",
+    "dev":                "npm run start-rs",
     "build":              "BUILD_PATH='./build' craco build",
     "build-rs":           "BUILD_PATH='./build' react-scripts build",
     "build-gh":           "BUILD_PATH='./docs' craco build",
