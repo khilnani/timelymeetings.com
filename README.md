@@ -25,6 +25,10 @@ Mobile app built using [React](https://reactjs.org) and [Ionic Capacitor](https:
 
 ## Links
 
+HTML/CSS
+
+- https://sabe.io/classes/css/grouping-nesting-selectors
+
 React
 
 - https://create-react-app.dev/docs/advanced-configuration/
