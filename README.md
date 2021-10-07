@@ -32,6 +32,7 @@ Mobile app built using [React](https://reactjs.org) and [Ionic Capacitor](https:
 - https://appiconmaker.co/Home/Index/e21c03d0-8767-4304-91d1-710f10958353
 - https://realfavicongenerator.net/
 - https://appicon.co/
+- https://soundbible.com/
 
 
 ## Known Issues

@@ -55,11 +55,12 @@ async function sendNativeNotification(message, when) {
       let success = await LocalNotifications.schedule({
         notifications: [
           {
-            title: "TimelyMeetings",
+            title: "Timely Meetings",
             body: message,
             id: new Date().getTime(),
             schedule: { at: when },
-            sound: null,
+            sound: './public/assets/double-beep.aiff',
+            vibrate: true,
             attachments: null,
             actionTypeId: "",
             extra: null
@@ -137,7 +138,9 @@ async function sendBrowserNotification(message, when) {
     console.log('Browser Notification permissions already granted, attempting to send.');
 
     let opts = {
-      requireInteraction: true
+      requireInteraction: true,
+      vibrate: [200, 100, 200],
+      renotify: true,
     }
 
     var notification = new Notification(message, opts);
