@@ -22,7 +22,6 @@
 }
 
 .iconRefresh {
-  color: #00816a;
   position: relative;
   bottom: -9px;
   margin: 0 0 0 10px;
@@ -30,7 +29,6 @@
 }
 
 .iconNotifications {
-  color: #00816a;
   position: relative;
   bottom: -9px;
   margin: 0 0 0 10px;
@@ -62,7 +60,6 @@
 }
 
 .checkbox {
-  background-color: #00816a;
   border-radius: 3px;
   border: 0px;
   color: white;
@@ -74,7 +71,6 @@
 }
 
 .button {
-  background-color: #00816a;
   border-radius: 5px;
   border: 0px;
   color: white;
@@ -85,7 +81,6 @@
 }
 
 .select {
-  background-color: #00816a;
   border-radius: 5px;
   border: 0px;
   color: white;
@@ -109,7 +104,6 @@
   padding: 10px;
   margin: 15px 5px 15px 5px;
   border-radius: 5px;
-  background: #00bf96;
   display: inline-block;
 }
 
@@ -117,7 +111,6 @@
   padding: 15px;
   border-radius: 5px;
   width: 40px;
-  background: #00816a;
   display: inline-block;
 }
 

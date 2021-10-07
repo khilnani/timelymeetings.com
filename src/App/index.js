@@ -146,11 +146,17 @@ class App extends Component {
       //console.log("updateClock", t.total);
       console.log("updateClock");
       
+      const bodyClassList = document.body.classList;
   
       if (t.total > 5 * 60 * 1000) {
-        document.body.style.backgroundColor = "#00ECB9"; // default
+        bodyClassList.remove('bodyWarning');
+        bodyClassList.remove('bodyComplete');
+        bodyClassList.add('bodyDefault');
       } else {
-        document.body.style.backgroundColor = "#ffd401"; // warning
+        bodyClassList.add('bodyWarning');
+        bodyClassList.remove('bodyComplete');
+        bodyClassList.remove('bodyDefault');
+
         if (!notificationWarningSentOrScheduled) {
           notificationWarningSentOrScheduled = true
           await Notifications.sendNotification(message_warning);
@@ -163,7 +169,9 @@ class App extends Component {
         clearInterval(timeInterval);        
         setClock(0, 0, 0);
 
-        document.body.style.backgroundColor = "#000000"; // completed
+        bodyClassList.remove('bodyWarning');
+        bodyClassList.add('bodyComplete');
+        bodyClassList.remove('bodyDefault');
 
         if (!notificationFinalSentOrScheduled) {
           notificationFinalSentOrScheduled = true
@@ -369,7 +377,6 @@ class App extends Component {
               </select>
               <RefreshCircleIcon
               className="iconRefresh"
-                color={'#00816a'} 
                 title='Reset timer'
                 width='30px'
                 height='30px'
@@ -379,7 +386,6 @@ class App extends Component {
                 (this.state.enabled === false) && 
                   <NotificationsDisabledIcon
                   className="iconNotifications"
-                  color={'#00816a'} 
                   title='Click to enable notifications'
                   height="28px"
                   width="28px"
@@ -391,7 +397,6 @@ class App extends Component {
                 (this.state.enabled === true) && 
                 <NotificationsEnabledIcon
                   className="iconNotifications"
-                  color={'#00816a'} 
                   title='Click to disable notifications'
                   height="28px"
                   width="28px"

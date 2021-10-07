@@ -23,6 +23,153 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 
+//////////////////////////////////////////////////////
+*/
+
+.bodyDefault {
+  background-color: #00ecb9;
+  color: #00703e;
+}
+
+.bodyDefault a {
+  color: #00703e;
+}
+
+.bodyDefault .logo {
+  filter: saturate(1000%);  
+}
+
+.bodyDefault .iconRefresh {
+  color: #000000;
+  opacity: 0.5;
+}
+
+.bodyDefault .iconNotifications {
+  color: #000000;
+  opacity: 0.5;
+}
+
+.bodyDefault .checkbox {
+  background-color: #00816a;
+}
+
+.bodyDefault .button {
+  background-color: #00816a;
+}
+
+.bodyDefault .select {
+  background-color: #00816a;
+}
+
+.bodyDefault #clockdiv > div  {
+  background-color: #00bf96;
+}
+
+.bodyDefault #clockdiv div > span {
+  background-color: #00816a;
+}
+
+/* 
+//////////////////////////////////////////////////////
+*/
+
+.bodyWarning {
+  background-color: #ffd401;
+  color: #574e23;
+}
+
+.bodyWarning a {
+  color: #574e23;
+}
+
+.bodyWarning .logo {
+  filter: saturate(500%);
+}
+
+.bodyWarning .iconRefresh {
+  color: #000000;
+  opacity: 0.55;
+}
+
+.bodyWarning .iconNotifications {
+  color: #000000;
+  opacity: 0.55;
+}
+
+.bodyWarning .checkbox {
+  background-color: #805e0d;
+}
+
+.bodyWarning .button {
+  background-color: #805e0d;
+}
+
+.bodyWarning .select {
+  background-color: #805e0d;
+}
+
+.bodyWarning #clockdiv > div  {
+  background-color: #805e0d;
+}
+
+.bodyWarning #clockdiv div > span {
+  background-color: #f0ab16;  
+}
+
+/* 
+//////////////////////////////////////////////////////
+*/
+
+.bodyComplete {
+  /* background-color: #dbdbdb; */
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.bodyComplete a {
+  color: #333333;
+}
+
+.bodyComplete .logo {
+  /* filter: hue-rotate(180deg) saturate(10000%) grayscale(100%); */
+  filter: hue-rotate(180deg) saturate(20000%) grayscale(100%) contrast(40%);
+}
+
+.bodyComplete .iconRefresh {
+  color: #000000;
+  opacity: 0.7;
+}
+
+.bodyComplete .iconNotifications {
+  color: #000000;
+  opacity: 0.7;
+}
+
+.bodyComplete .checkbox {
+  background-color: #494949;
+}
+
+.bodyComplete .button {
+  background-color: #494949;
+}
+
+.bodyComplete .select {
+  background-color: #494949;
+}
+
+.bodyComplete #clockdiv > div  {
+  background-color: #999999;
+}
+
+.bodyComplete #clockdiv div > span {
+  background-color: #494949;
+}
+
+/* 
+//////////////////////////////////////////////////////
+*/
+
 h1 {
   font-weight: 500;
   font-size: 26px;
@@ -35,7 +182,6 @@ p {
 }
   
 a {
-  color: #00703e;
   text-decoration: underline;
 }
 
