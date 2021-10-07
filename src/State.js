@@ -37,17 +37,22 @@ export function getUserOptions () {
   return o;
 }
 
-export function savePausedStateToLocalStorage(paused) {
-  console.log("savePausedStateToLocalStorage", paused);
-  localStorage.setItem('paused', paused)
+export function saveEnabledStateToLocalStorage(enabled) {
+  console.log("saveEnabledStateToLocalStorage", enabled);
+  localStorage.setItem('enabled', enabled)
 }
 
-export function getPausedStateToLocalStorage() {
-  console.log("savePausedStateToLocalStorage");
+export function getEnabledStateToLocalStorage() {
+  console.log("getEnabledStateToLocalStorage");
 
-  let paused = localStorage.getItem('paused')
-  console.log('savePausedStateToLocalStorage - paused', paused, typeof(paused));
-  return paused;
+  let enabled = localStorage.getItem('enabled')
+  if(enabled && typeof(enabled) === "string") {
+    enabled = (enabled === "true");
+  } else {
+    enabled = true; // default is enabled
+  }
+  console.log('getEnabledStateToLocalStorage - enabled', enabled, typeof(enabled));
+  return enabled;
 }
 
 export function saveDurationToLocalStorage() {

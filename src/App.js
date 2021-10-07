@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { App as NativeApp } from '@capacitor/app';
-import { RefreshCircle, StopCircle, PlayCircle } from 'react-ionicons'
+import { RefreshCircle as RefreshCircleIcon , Notifications as NotificationsEnabledIcon, NotificationsOffOutline as NotificationsDisabledIcon } from 'react-ionicons'
 
 import './App.css';
+
+import logoImage from './logo-trans-512.png'
 
 import * as State from './State'
 import * as Utils from './Utils'
@@ -40,7 +42,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      paused: false
+      enabled: false
     };
 
     this.onDurationChange = this.onDurationChange.bind(this);
@@ -141,7 +143,7 @@ class App extends Component {
       if (t.total > 5 * 60 * 1000) {
         document.body.style.backgroundColor = "#00ECB9"; // default
       } else {
-        document.body.style.backgroundColor = "#FBF719"; // yellow
+        document.body.style.backgroundColor = "##ffd401"; // warning
         if (!notificationWarningSentOrScheduled) {
           notificationWarningSentOrScheduled = true
           await Notifications.sendNotification(message_warning);
@@ -151,11 +153,9 @@ class App extends Component {
       if (t.total > 0) {
         setClock(t.hours, t.minutes, t.seconds);
       } else {
-        clearInterval(timeInterval);
-        
+        clearInterval(timeInterval);        
         setClock(0, 0, 0);
-        document.body.style.backgroundColor = "#FFFFFF"; // white
-
+        document.body.style.backgroundColor = "#000000"; // completed
         if (!notificationFinalSentOrScheduled) {
           notificationFinalSentOrScheduled = true
           await Notifications.sendNotification(message_end);
@@ -269,23 +269,23 @@ class App extends Component {
   }
 
   async togglePause() {
-    console.log("togglePause");
+    let enabled = this.state.enabled;
+    console.log("togglePause - current enabled?", enabled);
 
-    this.setState( function (state) {
-      console.log("Current paused state", state.paused);
-      let paused = !state.paused;
-      console.log("Changing paused state to", paused);
-      return {paused: paused};
-    });
+    enabled = !enabled;
 
-    if (this.state.paused) {
-      await Notifications.pauseNotifications();
-    } else {
+    this.setState({enabled: enabled});
+
+    console.log("togglePause - new enabled?", enabled);
+
+    if (enabled) {
       await Notifications.enableNotifications();
       await this.updateCountdown();
+    } else {
+      await Notifications.pauseNotifications();
     }
 
-    State.savePausedStateToLocalStorage(this.state.paused);
+    await State.saveEnabledStateToLocalStorage(enabled);
   }
   //-------------------------------
 
@@ -300,11 +300,13 @@ class App extends Component {
 
     this.setState(
       {
-        paused: State.getPausedStateToLocalStorage()
+        enabled: State.getEnabledStateToLocalStorage()
       }
     );
 
-    if(this.state.paused) {
+    console.log(this.state);
+
+    if(!this.state.enabled) {
       await Notifications.pauseNotifications();
     }
   }
@@ -319,7 +321,13 @@ class App extends Component {
     return (
         <div className="content">
 
-          <h1>Meeting Countdown Timer</h1>
+          <div className="header">
+            <img src={logoImage} className="logo" alt="Timely Meetings logo"/>
+            <span className="headerText">
+              <h1>Timely Meetings</h1>
+              <h4>Countdown Timer</h4>
+            </span>
+          </div>
 
           <p className="meetingTime">
             <span id="meetingTime"></span>
@@ -349,8 +357,8 @@ class App extends Component {
               >
                 <option value="-1">Loading ...</option>
               </select>
-              <RefreshCircle
-              className="icon"
+              <RefreshCircleIcon
+              className="iconRefresh"
                 color={'#00816a'} 
                 title='Reset timer'
                 width='30px'
@@ -358,25 +366,25 @@ class App extends Component {
                 onClick={this.onRefreshClick}
               />
               {
-                (this.state.paused) && 
-                  <PlayCircle
-                  className="icon"
+                (this.state.enabled === false) && 
+                  <NotificationsDisabledIcon
+                  className="iconNotifications"
                   color={'#00816a'} 
-                  title='Enable notifications'
-                  height="30px"
-                  width="30px"
+                  title='Click to enable notifications'
+                  height="28px"
+                  width="28px"
                   onClick={this.togglePause}
                 />
               }
 
               {
-                (!this.state.paused) && 
-                <StopCircle
-                  className="icon"
+                (this.state.enabled === true) && 
+                <NotificationsEnabledIcon
+                  className="iconNotifications"
                   color={'#00816a'} 
-                  title='Stop notifications'
-                  height="30px"
-                  width="30px"
+                  title='Click to disable notifications'
+                  height="28px"
+                  width="28px"
                   onClick={this.togglePause}
                 />
               }

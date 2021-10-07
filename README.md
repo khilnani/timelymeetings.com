@@ -25,6 +25,10 @@ Mobile app built using [React](https://reactjs.org) and [Ionic Capacitor](https:
 
 ## Links
 
+React
+
+- https://create-react-app.dev/docs/advanced-configuration/
+- 
 Capacitor 
 
 - https://capacitorjs.com/docs/getting-started

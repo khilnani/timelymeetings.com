@@ -1,7 +1,7 @@
 module.exports = {
   webpack: {
     configure: (webpackConfig) => {
-      if (process.env.NODE_ENV === 'xproduction') {
+      if (process.env.NODE_ENV === 'production') {
         // remove console in production
         const TerserPlugin = webpackConfig.optimization.minimizer.find((i) => i.constructor.name === 'TerserPlugin');
         if (TerserPlugin) {
