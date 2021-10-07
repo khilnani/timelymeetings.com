@@ -9,7 +9,7 @@ import * as State from './State'
 import * as Utils from './Utils'
 import * as Notifications from './Notifications'
 
-import { Capacitor } from "@capacitor/core";
+//import { Capacitor } from "@capacitor/core";
 
 let timeInterval = undefined;
 let notificationWarningSentOrScheduled = false
@@ -269,7 +269,7 @@ class App extends Component {
 
   render() {
     // web, ios, android.
-    let isNative = (Capacitor.getPlatform() !== "web");
+    //let isNative = (Capacitor.getPlatform() !== "web");
 
     return (
         <div className="content">
