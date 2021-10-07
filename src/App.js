@@ -143,7 +143,7 @@ class App extends Component {
       if (t.total > 5 * 60 * 1000) {
         document.body.style.backgroundColor = "#00ECB9"; // default
       } else {
-        document.body.style.backgroundColor = "##ffd401"; // warning
+        document.body.style.backgroundColor = "#ffd401"; // warning
         if (!notificationWarningSentOrScheduled) {
           notificationWarningSentOrScheduled = true
           await Notifications.sendNotification(message_warning);
@@ -155,7 +155,9 @@ class App extends Component {
       } else {
         clearInterval(timeInterval);        
         setClock(0, 0, 0);
+
         document.body.style.backgroundColor = "#000000"; // completed
+
         if (!notificationFinalSentOrScheduled) {
           notificationFinalSentOrScheduled = true
           await Notifications.sendNotification(message_end);
