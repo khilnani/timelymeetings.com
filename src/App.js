@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import { RefreshCircle } from 'react-ionicons'
+
+
 import './App.css';
 
 import * as State from './State'
@@ -27,6 +30,7 @@ class App extends Component {
     this.onDurationChange = this.onDurationChange.bind(this);
     this.onSpeedyChange = this.onSpeedyChange.bind(this);
     this.onSlotChange = this.onSlotChange.bind(this);
+    this.onRefreshClick = this.onRefreshClick.bind(this);
 
   }
 
@@ -237,7 +241,14 @@ class App extends Component {
   async onSlotChange() {
     console.log("onSlotChange");
 
-    State.saveSlotToLocalStorage();
+    this.updateStartTimeOptions();
+    await this.updateCountdown();
+  }
+
+  async onRefreshClick() {
+    console.log("onRefreshClick");
+
+    this.updateStartTimeOptions();
     await this.updateCountdown();
   }
 
@@ -265,7 +276,9 @@ class App extends Component {
 
           <h1>Meeting Countdown Timer</h1>
 
-          <p className="meetingTime"><span id="meetingTime"></span></p>
+          <p className="meetingTime">
+            <span id="meetingTime"></span>
+          </p>
 
           <div id="clockdiv">
             <div>
@@ -284,8 +297,24 @@ class App extends Component {
 
           <div>
 
+          <p>
+              <label className="label" htmlFor="meetingSlot">Start time: </label>
+              <select className="select" name="meetingSlot" id="meetingSlot" 
+                onChange={this.onSlotChange}
+              >
+                <option value="-1">Loading ...</option>
+              </select>
+              <RefreshCircle className="refreshIcon"
+                color={'#00816a'} 
+                title='Refresh'
+                width='30px'
+                height='30px'
+                onClick={this.onRefreshClick}
+              />
+            </p>
+
             <p>
-              <label className="label" htmlFor="meetingDuration">Meeting duration:</label>
+              <label className="label" htmlFor="meetingDuration">Duration: </label>
               <select className="select" name="meetingDuration" id="meetingDuration" defaultValue="30"
                 onChange={this.onDurationChange}>
                 <option value="15">15 mins</option>
@@ -297,33 +326,20 @@ class App extends Component {
                 <option value="150">2.5 hours</option>
                 <option value="180">3 hours</option>
               </select>
-            </p>
 
-            <p>
-              <label className="label" htmlFor="meetingSpeedy">End 5 minutes early?</label>
+              <label id="meetingSpeedyLabel" className="label" htmlFor="meetingSpeedy">End early?</label>
               <input className="checkbox" type="checkbox" id="meetingSpeedy" name="meetingSpeedy"
                 onChange={this.onSpeedyChange}
               />
             </p>
 
             <p>
-              <label className="label" htmlFor="meetingSlot">Meeting start time: </label>
-              <select className="select" name="meetingSlot" id="meetingSlot" 
-                onChange={this.onSlotChange}
-              >
-                <option value="-1">Loading ...</option>
-              </select>
-            </p>
-          </div>
-
-          { 
-            (!isNative) && 
-            <p>
               <span className="tinyText" >
                 <a href="https://khilnani.org" target="_blank"  rel="noreferrer">Nik Khilnani</a>
               </span>
             </p>
-          }
+
+          </div>
 
         </div>
     );

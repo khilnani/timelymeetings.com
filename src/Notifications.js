@@ -140,7 +140,6 @@ async function sendBrowserNotification(message, when) {
     let opts = {
       requireInteraction: true,
       vibrate: [200, 100, 200],
-      renotify: true,
     }
 
     var notification = new Notification(message, opts);
