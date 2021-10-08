@@ -6,6 +6,8 @@ import { SplashScreen } from '@capacitor/splash-screen';
 import { App as CapacitorApp } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
 
+import { Switch } from '@headlessui/react'
+
 import { 
   RefreshCircle as RefreshCircleIcon , 
   Notifications as NotificationsEnabledIcon, 
@@ -38,6 +40,10 @@ const isNative = (Capacitor.getPlatform() !== "web");
 
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 
 /*
 NativeApp.addListener('appStateChange', ({ isActive }) => {
@@ -437,6 +443,24 @@ class App extends Component {
                 <option value="150">2.5 hours</option>
                 <option value="180">3 hours</option>
               </select>
+
+              <Switch
+                checked={this.state.enabled}
+                onChange={this.onSpeedyChange}
+                className={classNames(
+                  this.state.enabled ? 'bg-gray-900 bg-opacity-50' : 'bg-gray-900 bg-opacity-20',
+                  'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'
+                )}
+              >
+                <span className="sr-only">Use setting</span>
+                <span
+                  aria-hidden="true"
+                  className={classNames(
+                    this.state.enabled ? 'translate-x-5' : 'translate-x-0',
+                    'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
+                  )}
+                />
+              </Switch>
 
               <label id="meetingSpeedyLabel" className="label" htmlFor="meetingSpeedy">End early?</label>
               <input className="checkbox" type="checkbox" id="meetingSpeedy" name="meetingSpeedy"
