@@ -449,7 +449,7 @@ class App extends Component {
               <span className="tinyText copyrightText" >
                 &copy; {(new Date()).getFullYear()} <a href="https://khilnani.org" target="_blank"  rel="noreferrer">Nik Khilnani</a>
                 <span> | </span>
-                 <a href="javascript:void(0);" onClick={this.launchSupport}>Support</a>
+                 <div className="link" role="button" tabindex="0" onClick={this.launchSupport}>Support</div>
                 {
                   (isNative) && 
                   (

@@ -40,6 +40,12 @@ a {
   text-decoration: underline;
 }
 
+.link {
+  text-decoration: underline;
+  display: inline;
+  cursor: pointer;
+}
+
 .tinyText {
   font-weight: 500;
   font-size: 11px;
