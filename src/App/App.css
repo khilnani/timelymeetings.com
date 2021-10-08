@@ -40,6 +40,7 @@
 }
 
 #meetingSpeedy{
+  vertical-align: middle -webkit-baseline-middle;
   position: relative;
   bottom: -2px;
 }
@@ -57,8 +58,8 @@
   margin: 2px;
   padding: 5px 10px 5px 10px;
   text-align: center;
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
 }
 
 .button {
