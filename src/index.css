@@ -10,17 +10,18 @@ body {
 }
 
 body {
-  text-align: center;
-  background: #00ecb9;
+  background: #14CCB6;
+  background: linear-gradient(90deg,#14CCB6 0%, #0DC1BA 90%,#05B6BE 100%); 
   font-family: sans-serif;
   font-weight: 100;
-  color: #00703e;
+  color: #0b4d4a;
 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
 }
 
 /* 
@@ -28,12 +29,13 @@ body {
 */
 
 .bodyDefault {
-  background-color: #00ecb9;
-  color: #00703e;
+  background: #14CCB6;
+  background: linear-gradient(90deg,#14CCB6 0%, #0DC1BA 90%,#05B6BE 100%); 
+  color: #0b4d4a;
 }
 
 .bodyDefault a {
-  color: #00703e;
+  color: #0b4d4a;
 }
 
 .bodyDefault .logo {
@@ -42,32 +44,32 @@ body {
 
 .bodyDefault .iconRefresh {
   color: #000000;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .bodyDefault .iconNotifications {
   color: #000000;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .bodyDefault .checkbox {
-  background-color: #00816a;
+  background-color: #087773;
 }
 
 .bodyDefault .button {
-  background-color: #00816a;
+  background-color: #087773;
 }
 
 .bodyDefault .select {
-  background-color: #00816a;
+  background-color: #087773;
 }
 
 .bodyDefault #clockdiv > div  {
-  background-color: #00bf96;
+  background-color: #0ca19c;
 }
 
 .bodyDefault #clockdiv div > span {
-  background-color: #00816a;
+  background-color: #087773;
 }
 
 /* 
@@ -75,12 +77,13 @@ body {
 */
 
 .bodyWarning {
-  background-color: #ffd401;
-  color: #574e23;
+  background-color: #FFC500;
+  background: linear-gradient(210deg,#FFD401 0%, #FFC500 50%,#FFB900 100%); 
+  color: #664b00;
 }
 
 .bodyWarning a {
-  color: #574e23;
+  color: #664b00;
 }
 
 .bodyWarning .logo {
@@ -89,32 +92,32 @@ body {
 
 .bodyWarning .iconRefresh {
   color: #000000;
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
 .bodyWarning .iconNotifications {
   color: #000000;
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
 .bodyWarning .checkbox {
-  background-color: #805e0d;
+  background-color: #885d00;
 }
 
 .bodyWarning .button {
-  background-color: #805e0d;
+  background-color: #885d00;
 }
 
 .bodyWarning .select {
-  background-color: #805e0d;
+  background-color: #885d00;
 }
 
 .bodyWarning #clockdiv > div  {
-  background-color: #805e0d;
+  background-color: #885d00;
 }
 
 .bodyWarning #clockdiv div > span {
-  background-color: #f0ab16;  
+  background-color: #faa200;  
 }
 
 /* 
@@ -122,8 +125,8 @@ body {
 */
 
 .bodyComplete {
-  /* background-color: #dbdbdb; */
-  background-color: #ffffff;
+  background-color: #FFFFFF;
+  background: linear-gradient(30deg,#CCCCCC 0%, #EEEEEE 50%,#FFFFFF 100%); 
   color: #333333;
 }
 

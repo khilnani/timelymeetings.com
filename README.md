@@ -56,6 +56,7 @@ Utilities
 - https://realfavicongenerator.net/
 - https://appicon.co/
 - https://soundbible.com/
+- https://cssgradient.io/
 
 
 ## Known Issues
