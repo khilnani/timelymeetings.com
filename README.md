@@ -42,7 +42,14 @@ GitHub Pages
 React
 
 - https://create-react-app.dev/docs/advanced-configuration/
-- 
+
+Tailwind
+
+- https://tailwindcss.com/docs/theme
+- https://tailwindcss.com/docs/customizing-colors
+- https://tailwindcss.com/docs/background-color#changing-opacity
+- https://tailwindcss.com/docs/ring-color
+
 Capacitor 
 
 - https://capacitorjs.com/docs/getting-started
