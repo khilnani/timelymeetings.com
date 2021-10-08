@@ -44,6 +44,7 @@ Capacitor
 Icons
 
 - https://react-ionicons.netlify.app/
+- https://github.com/ionic-team/cordova-res
 
 Utilities
 
@@ -55,6 +56,8 @@ Utilities
 
 ## Known Issues
 
+- cordova-res on Apple Silicon M1 `vips/vips8` error
+  - `brew reinstall vips`
 - Background tasks with capacitor
   - https://github.com/ionic-team/capacitor/issues/3032
   - Alt - https://github.com/robingenz/capacitor-background-task
@@ -68,3 +71,8 @@ The below articles/tutorials help the project get started
 
 - https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
 - https://stackoverflow.com/questions/7082257/css-how-to-skin-a-select-box-with-css
+
+Update XCode Command Line Tools
+
+- `sudo rm -rf /Library/Developer/CommandLineTools`
+- `sudo xcode-select --install`

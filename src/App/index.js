@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { App as NativeApp } from '@capacitor/app';
+//import { App as NativeApp } from '@capacitor/app';
+import { SplashScreen } from '@capacitor/splash-screen';
+
 
 import { 
   RefreshCircle as RefreshCircleIcon , 
@@ -29,6 +31,7 @@ const browser_title = 'Timely Meetings | Meeting Countdown Timer';
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
+/*
 NativeApp.addListener('appStateChange', ({ isActive }) => {
   console.log('App state changed. Is active?', isActive);
 });
@@ -40,7 +43,7 @@ NativeApp.addListener('appUrlOpen', data => {
 NativeApp.addListener('appRestoredResult', data => {
   console.log('Restored state:', data);
 });
-
+*/
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
@@ -326,6 +329,8 @@ class App extends Component {
     if(!this.state.enabled) {
       await Notifications.pauseNotifications();
     }
+
+    SplashScreen.hide();
   }
 
   //////////////////////////////////////////////////////
