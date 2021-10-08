@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-//import { App as NativeApp } from '@capacitor/app';
-import { SplashScreen } from '@capacitor/splash-screen';
 
+import { Capacitor } from '@capacitor/core';
+
+import { SplashScreen } from '@capacitor/splash-screen';
+import { App as CapacitorApp } from '@capacitor/app';
+import { Browser } from '@capacitor/browser';
 
 import { 
   RefreshCircle as RefreshCircleIcon , 
@@ -27,6 +30,11 @@ let notificationFinalSentOrScheduled = false
 const message_warning = 'Your meeting will end in 5 minutes';
 const message_end = 'Your meeting has ended';
 const browser_title = 'Timely Meetings | Meeting Countdown Timer';
+
+const supportLink = "mailto:support@timelymeetings.com";
+
+// web, ios, android.
+const isNative = (Capacitor.getPlatform() !== "web");
 
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
@@ -62,6 +70,7 @@ class App extends Component {
     this.onSlotChange = this.onSlotChange.bind(this);
     this.onRefreshClick = this.onRefreshClick.bind(this);
     this.togglePause = this.togglePause.bind(this);
+    this.launchSupport = this.launchSupport.bind(this);
   }
 
   //////////////////////////////////////////////////////
@@ -306,6 +315,15 @@ class App extends Component {
 
     await State.saveEnabledStateToLocalStorage(enabled);
   }
+
+  async launchSupport() {
+    console.log("launchSupport", isNative);
+    if(isNative) {
+      CapacitorApp.openUrl({url: supportLink}) 
+    } else {
+      Browser.open({url: supportLink})
+    }
+  }
   
   //////////////////////////////////////////////////////
 
@@ -337,9 +355,6 @@ class App extends Component {
   //////////////////////////////////////////////////////
 
   render() {
-    // web, ios, android.
-    //let isNative = (Capacitor.getPlatform() !== "web");
-
     return (
         <div className="content">
 
@@ -433,6 +448,20 @@ class App extends Component {
             <p>
               <span className="tinyText copyrightText" >
                 &copy; {(new Date()).getFullYear()} <a href="https://khilnani.org" target="_blank"  rel="noreferrer">Nik Khilnani</a>
+                <span> | </span>
+                 <a href="javascript:void(0);" onClick={this.launchSupport}>Support</a>
+                {
+                  (isNative) && 
+                  (
+                    <span> | <a href="https://timelymeetings.com" target="_blank"  rel="noreferrer">TimelyMeetings.com</a></span>
+                  )
+                }
+                {
+                  (!isNative) && 
+                  (
+                    <span> | <a href="/legal/termsofuse/" target="_blank"  rel="noreferrer">Terms of Use</a> | <a href="/legal/privacy/" target="_blank"  rel="noreferrer">Privacy Policy</a></span>
+                  )
+                }
               </span>
             </p>
 

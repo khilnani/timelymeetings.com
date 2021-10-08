@@ -29,6 +29,12 @@ HTML/CSS
 
 - https://sabe.io/classes/css/grouping-nesting-selectors
 
+GitHub Pages
+
+- SPA on Github Pages
+  - https://github.com/rafgraph/spa-github-pages
+  - https://itnext.io/so-you-want-to-host-your-single-age-react-app-on-github-pages-a826ab01e48
+
 React
 
 - https://create-react-app.dev/docs/advanced-configuration/
@@ -38,7 +44,10 @@ Capacitor
 - https://capacitorjs.com/docs/getting-started
 - https://capacitorjs.com/docs/web
 - https://capacitorjs.com/docs/apis
+  - https://capacitorjs.com/docs/apis/app
+  - https://capacitorjs.com/docs/apis/splash-screen
   - https://capacitorjs.com/docs/apis/local-notifications
+  - https://capacitorjs.com/docs/apis/browser
 - https://capacitorjs.com/docs/apis/app#statechangelistener
 
 Icons
