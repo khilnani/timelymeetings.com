@@ -45,6 +45,10 @@ Icons
 
 - https://react-ionicons.netlify.app/
 - https://github.com/ionic-team/cordova-res
+- iOS
+  - https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/image-size-and-resolution/
+- iPhone
+  - https://developer.apple.com/design/human-interface-guidelines/watchos/visual/app-icon/
 
 Utilities
 

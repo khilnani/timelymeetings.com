@@ -8,7 +8,6 @@ const config: CapacitorConfig = {
     LocalNotifications: {
     },
     SplashScreen: {
-      launchShowDuration: 10000,
       launchAutoHide: false,
       backgroundColor: "#00ecb9",
       androidSplashResourceName: "splash",
