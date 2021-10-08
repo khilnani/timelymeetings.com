@@ -2,6 +2,19 @@
 //////////////////////////////////////////////////////
 */
 
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;  
+}
+
+/* 
+//////////////////////////////////////////////////////
+*/
+
 .bodyDefault {
   background: #14CCB6;
   background: linear-gradient(90deg,#14CCB6 0%, #0DC1BA 90%,#05B6BE 100%); 
