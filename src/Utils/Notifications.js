@@ -4,6 +4,7 @@ import { LocalNotifications } from '@capacitor/local-notifications';
 //////////////////////////////////////////////////////
 
 import doubleBeepAudio from './../assets/audio/double-beep.mp3';
+import blankAudio from './../assets/audio/blank.mp3';
 import icon128 from './../assets/images/icon-128.png';
 
 //////////////////////////////////////////////////////
@@ -15,8 +16,26 @@ let enabled = true;
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
+function playEmptyAudio() {
+  console.log('playEmptyAudio');
+  let a = new Audio(blankAudio);
+  a.crossorigin = 'anonymous';
+  a.autoplay = true;
+  a.play();
+}
+
+function playNotificationAudio() {
+  console.log('playNotificationAudio');
+  let a = new Audio(doubleBeepAudio);
+  a.crossorigin = 'anonymous';
+  a.autoplay = true;
+  a.play();
+}
+
 async function checkNativeNotificationsAvailability () {
   console.log('checkNativeNotificationsAvailability');
+
+  playEmptyAudio();
   
   // web, ios, android?
   let isNative = (Capacitor.getPlatform() !== "web");
@@ -157,11 +176,8 @@ async function sendBrowserNotification(message, when) {
 
     var notification = new Notification(message, opts);
     notification.onshow = function() { 
-      console.log("sendBrowserNotification - Notification displayed", doubleBeepAudio);
-      let a = new Audio(doubleBeepAudio);
-      a.crossorigin = 'anonymous';
-      a.autoplay = true;
-      a.play();
+      console.log("sendBrowserNotification - Notification displayed");
+      playNotificationAudio();
     };
     console.log('sendBrowserNotification - sent', notification);
     
