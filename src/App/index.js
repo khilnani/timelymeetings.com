@@ -12,13 +12,14 @@ import {
   NotificationsOffOutline as NotificationsDisabledIcon 
 } from 'react-ionicons'
 
-import logoImage from './../images/logo-trans-512.png'
-
 import * as State from '../Utils/State'
 import * as Utils from '../Utils/DateUtils'
 import * as Notifications from '../Utils/Notifications'
 
+//////////////////////////////////////////////////////
+
 import './App.css';
+import logoImage from './../assets/images/logo-trans-512.png'
 
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////

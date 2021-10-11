@@ -2,8 +2,14 @@ import { Capacitor } from '@capacitor/core';
 import { LocalNotifications } from '@capacitor/local-notifications';
 
 //////////////////////////////////////////////////////
+
+import doubleBeepAudio from './../assets/audio/double-beep.mp3';
+import icon128 from './../assets/images/icon-128.png';
+
+//////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
+let doubleBeepIOSAudioPath = './public/assets/audio/double-beep.aiff';
 let enabled = true;
 
 //////////////////////////////////////////////////////
@@ -65,7 +71,7 @@ async function sendNativeNotification(message, when) {
             body: message,
             id: new Date().getTime(),
             schedule: { at: when },
-            sound: './public/assets/double-beep.aiff',
+            sound: doubleBeepIOSAudioPath,
             vibrate: true,
             attachments: null,
             actionTypeId: "",
@@ -146,9 +152,17 @@ async function sendBrowserNotification(message, when) {
     let opts = {
       requireInteraction: true,
       vibrate: [200, 100, 200],
+      icon: icon128,
     }
 
     var notification = new Notification(message, opts);
+    notification.onshow = function() { 
+      console.log("sendBrowserNotification - Notification displayed", doubleBeepAudio);
+      let a = new Audio(doubleBeepAudio);
+      a.crossorigin = 'anonymous';
+      a.autoplay = true;
+      a.play();
+    };
     console.log('sendBrowserNotification - sent', notification);
     
   } else {
