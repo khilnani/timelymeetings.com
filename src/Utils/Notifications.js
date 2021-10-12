@@ -18,18 +18,26 @@ let enabled = true;
 
 function playEmptyAudio() {
   console.log('playEmptyAudio');
-  let a = new Audio(blankAudio);
-  a.crossorigin = 'anonymous';
-  a.autoplay = true;
-  a.play();
+  try {
+    let a = new Audio(blankAudio);
+    a.crossorigin = 'anonymous';
+    a.autoplay = true;
+    a.play();
+  } catch (e) {
+    console.error('playEmptyAudio', e);
+  }
 }
 
 function playNotificationAudio() {
   console.log('playNotificationAudio');
-  let a = new Audio(doubleBeepAudio);
-  a.crossorigin = 'anonymous';
-  a.autoplay = true;
-  a.play();
+  try {
+    let a = new Audio(doubleBeepAudio);
+    a.crossorigin = 'anonymous';
+    a.autoplay = true;
+    a.play();
+  } catch (e) {
+    console.error('playNotificationAudio', e);
+  }
 }
 
 async function checkNativeNotificationsAvailability () {
