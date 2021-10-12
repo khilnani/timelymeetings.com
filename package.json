@@ -25,7 +25,7 @@
     "start": "BROWSER=edge craco start",
     "start-rs": "BROWSER=edge react-scripts start",
     "dev": "npm run start-rs",
-    "version" : "echo '{\"published\": \"'`date`'\"}' > public/release.json",
+    "version" : "echo '{\"published\": \"'`date`'\"}' > public/version.json",
     "build": "BUILD_PATH='./build' craco build",
     "build-rs": "BUILD_PATH='./build' react-scripts build",
     "build-gh": "BUILD_PATH='./docs' craco build",
