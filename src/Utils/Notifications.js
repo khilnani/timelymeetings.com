@@ -13,6 +13,9 @@ import icon128 from './../assets/images/icon-128.png';
 let doubleBeepIOSAudioPath = './public/assets/audio/double-beep.aiff';
 let enabled = true;
 
+// web, ios, android.
+const isNative = (Capacitor.getPlatform() !== "web");
+
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
@@ -43,10 +46,10 @@ async function playNotificationAudio() {
 async function checkNativeNotificationsAvailability () {
   console.log('checkNativeNotificationsAvailability');
 
-  await playEmptyAudio();
+  if (!isNative) {
+    await playEmptyAudio();
+  }
   
-  // web, ios, android?
-  let isNative = (Capacitor.getPlatform() !== "web");
   console.log('checkNativeNotificationsAvailability - isNative?', isNative);
 
   // Capacitor?

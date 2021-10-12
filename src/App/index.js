@@ -18,6 +18,7 @@ import * as Notifications from '../Utils/Notifications'
 
 //////////////////////////////////////////////////////
 
+import version from '../version.json'
 import './App.css';
 import logoImage from './../assets/images/logo-trans-512.png'
 
@@ -63,7 +64,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      enabled: false
+      enabled: false,
     };
 
     this.onDurationChange = this.onDurationChange.bind(this);
@@ -343,7 +344,7 @@ class App extends Component {
       }
     );
 
-    console.log(this.state);
+    console.log('componentDidMount - state', this.state);
 
     if(!this.state.enabled) {
       await Notifications.pauseNotifications();
@@ -452,13 +453,27 @@ class App extends Component {
               <span className="tinyText copyrightText" >
                 &copy; {(new Date()).getFullYear()} <a href="https://khilnani.org" target="_blank"  rel="noreferrer">Nik Khilnani</a>
                 <span> | </span>
-                 <div className="link" role="button" tabindex="0" onClick={this.launchSupport}>Support?</div>
+                <span>Ver: {version.published}</span> 
+                <span> | </span>
+                <span className="link" role="button" tabIndex="0" onClick={this.launchSupport}>Support</span>
+                 
                 {
                   /*
                     <span> | <a href="/legal/termsofuse/" target="_blank"  rel="noreferrer">Terms of Use</a> | <a href="/legal/privacy/" target="_blank"  rel="noreferrer">Privacy Policy</a></span>
                   */
                 }
                 
+              </span>
+            </p>
+            }
+
+{
+            (isNative) && 
+            <p>
+              <span className="tinyText copyrightText" >
+                &copy; {(new Date()).getFullYear()} <a href="https://timelymeetings.com" target="_blank"  rel="noreferrer">Timely Meetings</a>
+                <span> | </span>
+                <span>Ver: {version.published}</span> 
               </span>
             </p>
             }
