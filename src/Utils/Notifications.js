@@ -16,25 +16,25 @@ let enabled = true;
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 
-function playEmptyAudio() {
+async function playEmptyAudio() {
   console.log('playEmptyAudio');
   try {
     let a = new Audio(blankAudio);
     a.crossorigin = 'anonymous';
     a.autoplay = true;
-    a.play();
+    await a.play();
   } catch (e) {
     console.error('playEmptyAudio', e);
   }
 }
 
-function playNotificationAudio() {
+async function playNotificationAudio() {
   console.log('playNotificationAudio');
   try {
     let a = new Audio(doubleBeepAudio);
     a.crossorigin = 'anonymous';
     a.autoplay = true;
-    a.play();
+    await a.play();
   } catch (e) {
     console.error('playNotificationAudio', e);
   }
@@ -43,7 +43,7 @@ function playNotificationAudio() {
 async function checkNativeNotificationsAvailability () {
   console.log('checkNativeNotificationsAvailability');
 
-  playEmptyAudio();
+  await playEmptyAudio();
   
   // web, ios, android?
   let isNative = (Capacitor.getPlatform() !== "web");
@@ -183,9 +183,9 @@ async function sendBrowserNotification(message, when) {
     }
 
     var notification = new Notification(message, opts);
-    notification.onshow = function() { 
+    notification.onshow = async function() { 
       console.log("sendBrowserNotification - Notification displayed");
-      playNotificationAudio();
+      await playNotificationAudio();
     };
     console.log('sendBrowserNotification - sent', notification);
     
