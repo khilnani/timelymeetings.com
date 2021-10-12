@@ -1,7 +1,7 @@
 
 .header {
-  position: relative;
-  left: 15px;
+  width: 280px;
+  margin: 0 auto;
 }
 
 .logo {
@@ -24,17 +24,20 @@
 .iconRefresh {
   position: relative;
   bottom: -9px;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 5px;
   cursor: pointer;
 }
 
 .iconNotifications {
   position: relative;
   bottom: -9px;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 5px;
   cursor: pointer;
 }
 
+#meetingDurationLabel {
+  margin: 0 0px 0 10px;
+}
 #meetingSpeedyLabel {
   margin: 0 5px 0 10px;
 }
@@ -42,7 +45,11 @@
 #meetingSpeedy{
   vertical-align: middle -webkit-baseline-middle;
   position: relative;
-  bottom: -2px;
+  bottom: -4px;
+}
+
+#meetingWarningLabel {
+  margin: 0 0 0 10px;  
 }
 
 .label {
@@ -77,7 +84,7 @@
   border: 0px;
   color: white;
   margin: 2px;
-  padding: 5px;
+  padding: 5px 2px 5px 2px;
 
   text-align: center;
   font-size: 15px;

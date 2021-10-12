@@ -19,21 +19,24 @@ export function getUserOptions () {
 
   let select = undefined;  
   select = document.getElementById("meetingDuration");
-
   let meetingDuration = select.options[select.selectedIndex].value;
-  select = document.getElementById("meetingSlot");
 
   let meetingSlot = -1;
-  console.log('select.selectedIndex', select.selectedIndex);
+  select = document.getElementById("meetingSlot");
+  console.log("getUserOptions - meetingSlot.selectedIndex", select.selectedIndex);
   if (select.selectedIndex > -1) 
   meetingSlot = select.options[select.selectedIndex].value;
 
   const meetingSpeedy = document.getElementById("meetingSpeedy").checked;
 
+  select = document.getElementById("meetingWarning");
+  let meetingWarning = select.options[select.selectedIndex].value;
+
   let o ={
     "meetingDuration": meetingDuration,
     "meetingSlot": meetingSlot,
     "meetingSpeedy": meetingSpeedy,
+    "meetingWarning": meetingWarning,
   }
   console.log("getUserOptions.o", o);
   return o;
@@ -88,6 +91,13 @@ export function saveSpeedyToLocalStorage() {
   localStorage.setItem('meetingSpeedy', o.meetingSpeedy)
 }
 
+export function saveWarningToLocalStorage() {
+  console.log("saveWarningToLocalStorage");
+
+  let o = getUserOptions(); 
+  localStorage.setItem('meetingWarning', o.meetingWarning)
+}
+
 //////////////////////////////////////////////////////
 
 export function saveToLocalStorage() {
@@ -96,6 +106,7 @@ export function saveToLocalStorage() {
   saveDurationToLocalStorage();
   saveSlotToLocalStorage();
   saveSpeedyToLocalStorage();
+  saveWarningToLocalStorage();
 }
 
 //////////////////////////////////////////////////////
@@ -112,6 +123,9 @@ export function updateFromLocalStorage(updateStartTimeOptions) {
   let meetingSpeedy = localStorage.getItem('meetingSpeedy')
   console.log('lc.meetingSpeedy', meetingSpeedy, typeof(meetingSpeedy));
 
+  let meetingWarning = localStorage.getItem('meetingWarning')
+  console.log('lc.meetingWarning', meetingWarning, typeof(meetingWarning));
+
   if (meetingDuration) {
     document.getElementById("meetingDuration").value = meetingDuration;
     // Make sure the options are correct before trying to preselect the selected slot
@@ -124,6 +138,10 @@ export function updateFromLocalStorage(updateStartTimeOptions) {
   if (meetingSpeedy) {
     console.log('meetingSpeedy.checked', (meetingSpeedy === "true"))
     document.getElementById("meetingSpeedy").checked = (meetingSpeedy === "true");
+  }
+
+  if(meetingWarning) {
+    document.getElementById("meetingWarning").value = meetingWarning;
   }
 }
 

@@ -29,7 +29,7 @@ let timeInterval = undefined;
 let notificationWarningSentOrScheduled = false
 let notificationFinalSentOrScheduled = false
 
-const message_warning = 'Your meeting will end in 5 minutes';
+const message_warning = 'Your meeting will end in ';
 const message_end = 'Your meeting has ended';
 const browser_title = 'Timely Meetings | Meeting Countdown Timer';
 
@@ -72,6 +72,7 @@ class App extends Component {
     this.onSlotChange = this.onSlotChange.bind(this);
     this.onRefreshClick = this.onRefreshClick.bind(this);
     this.togglePause = this.togglePause.bind(this);
+    this.onWarningChange = this.onWarningChange.bind(this);
     this.launchSupport = this.launchSupport.bind(this);
   }
 
@@ -81,8 +82,8 @@ class App extends Component {
   // CSS from https://stackoverflow.com/questions/7082257/css-how-to-skin-a-select-box-with-css
 
 
-  async initializeClock(id, endTime) {
-    console.log('initializeClock');
+  async initializeClock(id, endTime, meetingWarning) {
+    console.log('initializeClock', endTime, meetingWarning);
 
     clearInterval(timeInterval);
     notificationWarningSentOrScheduled = false;
@@ -92,9 +93,9 @@ class App extends Component {
     // if not successful send in real time
     await Notifications.clearScheduledNotifications();
 
-    let warningTime = new Date(Date.parse(endTime) - 5 * 60 * 1000);
+    let warningTime = new Date(Date.parse(endTime) - meetingWarning * 60 * 1000);
     if (warningTime > Date.now()) {
-      if (await Notifications.scheduleNotification(message_warning, warningTime) ) {
+      if (await Notifications.scheduleNotification(message_warning + meetingWarning + " minutes.", warningTime) ) {
         notificationWarningSentOrScheduled = true;
       }
     } else {
@@ -162,7 +163,7 @@ class App extends Component {
       
       const bodyClassList = document.body.classList;
   
-      if (t.total > 5 * 60 * 1000) {
+      if (t.total > meetingWarning * 60 * 1000) {
         bodyClassList.remove('bodyWarning');
         bodyClassList.remove('bodyComplete');
         bodyClassList.add('bodyDefault');
@@ -173,7 +174,7 @@ class App extends Component {
 
         if (!notificationWarningSentOrScheduled) {
           notificationWarningSentOrScheduled = true
-          await Notifications.sendNotification(message_warning);
+          await Notifications.sendNotification(message_warning + meetingWarning + " minutes.");
         }
       }
 
@@ -248,6 +249,7 @@ class App extends Component {
     let meetingDuration = o.meetingDuration;
     let meetingSlot = o.meetingSlot;
     let meetingSpeedy = o.meetingSpeedy;
+    let meetingWarning = o.meetingWarning;
   
     let meetingStartTime = new Date(Date.parse(meetingSlot));
     console.log('meetingStartTime', meetingStartTime);
@@ -263,7 +265,7 @@ class App extends Component {
     // update display
     this.updateMeetingTime(meetingStartTime, meetingEndTime);
 
-    await this.initializeClock("clockdiv", meetingEndTime);
+    await this.initializeClock("clockdiv", meetingEndTime, meetingWarning);
   
   }
   
@@ -295,6 +297,12 @@ class App extends Component {
     console.log("onRefreshClick");
 
     this.updateStartTimeOptions();
+    await this.updateCountdown();
+  }
+
+  async onWarningChange() {
+    console.log("onWarningChange");
+
     await this.updateCountdown();
   }
 
@@ -390,7 +398,7 @@ class App extends Component {
           <div>
 
           <p>
-              <label className="label" htmlFor="meetingSlot">Start time: </label>
+              <label className="label" htmlFor="meetingSlot">Start: </label>
               <select className="select" name="meetingSlot" id="meetingSlot" 
                 onChange={this.onSlotChange}
               >
@@ -403,6 +411,50 @@ class App extends Component {
                 height='30px'
                 onClick={this.onRefreshClick}
               />
+
+              <label className="label" htmlFor="meetingDuration" id="meetingDurationLabel">Length: </label>
+              <select className="select" name="meetingDuration" id="meetingDuration" defaultValue="30"
+                onChange={this.onDurationChange}>
+                <option value="15">15 mins</option>
+                <option value="30">30 mins</option>
+                <option value="45">45 mins</option>
+                <option value="60">1 hour</option>
+                <option value="90">1.5 hours</option>
+                <option value="120">2 hours</option>
+                <option value="150">2.5 hours</option>
+                <option value="180">3 hours</option>
+              </select>
+
+
+
+            </p>
+
+            <p>
+
+              <label id="meetingSpeedyLabel" className="label" htmlFor="meetingSpeedy">End early?</label>
+              <input className="checkbox" type="checkbox" id="meetingSpeedy" name="meetingSpeedy"
+                onChange={this.onSpeedyChange}
+              />
+
+              <label id="meetingWarningLabel" className="label" htmlFor="meetingWarning">Notification: </label>
+              <select className="select" name="meetingWarning" id="meetingWarning" defaultValue="5"
+                onChange={this.onWarningChange}>
+                <option value="1">1 min</option>
+                <option value="2">2 min</option>
+                <option value="3">3 min</option>
+                <option value="4">4 min</option>
+                <option value="5">5 mins</option>
+                <option value="10">10 mins</option>
+                <option value="15">15 mins</option>
+                <option value="20">20 mins</option>
+                <option value="25">25 mins</option>
+                <option value="30">30 mins</option>
+                <option value="45">45 mins</option>
+                <option value="50">50 mins</option>
+                <option value="45">55 mins</option>
+                <option value="60">1 hour</option>
+              </select>
+
               {
                 (this.state.enabled === false) && 
                   <NotificationsDisabledIcon
@@ -424,26 +476,6 @@ class App extends Component {
                   onClick={this.togglePause}
                 />
               }
-            </p>
-
-            <p>
-              <label className="label" htmlFor="meetingDuration">Duration: </label>
-              <select className="select" name="meetingDuration" id="meetingDuration" defaultValue="30"
-                onChange={this.onDurationChange}>
-                <option value="15">15 mins</option>
-                <option value="30">30 mins</option>
-                <option value="45">45 mins</option>
-                <option value="60">1 hour</option>
-                <option value="90">1.5 hours</option>
-                <option value="120">2 hours</option>
-                <option value="150">2.5 hours</option>
-                <option value="180">3 hours</option>
-              </select>
-
-              <label id="meetingSpeedyLabel" className="label" htmlFor="meetingSpeedy">End early?</label>
-              <input className="checkbox" type="checkbox" id="meetingSpeedy" name="meetingSpeedy"
-                onChange={this.onSpeedyChange}
-              />
 
             </p>
 
