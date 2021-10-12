@@ -51,8 +51,8 @@
     "build-ios-open": "npm run build-all && npm run ios-open",
     "build-rs-ios-open": "npm run build-all-rs && npm run ios-open",
     "git-add": "git add build/** && git add docs/** && git add public/** && git add src/** && git add ios/** && git add ios/** && git add resources/** && git add assets/**",
-    "all": "npm run version && npm run build-all && npm run git-add",
-    "all-rs": "npm run version && npm run build-all-rs && npm run git-add",
+    "publish": "npm run version && npm run build-all && npm run git-add",
+    "publish-rs": "npm run version && npm run build-all-rs && npm run git-add",
     "test": "craco test",
     "test-rs": "react-scripts test"
   },
