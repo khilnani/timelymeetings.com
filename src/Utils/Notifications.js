@@ -137,7 +137,12 @@ async function checkBrowserNotificationsAvailability () {
   // https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification
   // https://web.dev/tags/notifications/
   // https://notifications.spec.whatwg.org/
-  let avail = ('Notification' in window);
+  let avail = false;
+  try {
+    avail = ('Notification' in window);
+  } catch (e) {
+    console.log('checkBrowserNotificationsAvailability - error?', e);
+  }
   console.log('checkBrowserNotificationsAvailability - supported?', avail);
   return avail;
 }
