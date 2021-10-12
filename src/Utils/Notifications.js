@@ -178,27 +178,35 @@ async function requestBrowserNotificationsPermissions () {
 async function sendBrowserNotification(message, when) {
   console.log('sendBrowserNotification', message, when);
 
-  if (checkBrowserNotificationsAvailability() && await requestBrowserNotificationsPermissions()) {
-    console.log('sendBrowserNotification - permissions already granted, attempting to send.');
+  try {
+    if (checkBrowserNotificationsAvailability()) {
+      if (await requestBrowserNotificationsPermissions()) {
+        console.log('sendBrowserNotification - permissions already granted, attempting to send.');
 
-    let opts = {
-      requireInteraction: true,
-      vibrate: [200, 100, 200],
-      icon: icon128,
+        let opts = {
+          requireInteraction: true,
+          vibrate: [200, 100, 200],
+          icon: icon128,
+        }
+
+        var notification = new Notification(message, opts);
+        notification.onshow = async function() { 
+          console.log("sendBrowserNotification - Notification displayed");
+          await playNotificationAudio();
+        };
+        console.log('sendBrowserNotification - sent', notification);
+      } else {
+        console.log('sendBrowserNotification - permissions denied.');
+        alert(message);
+      }
+    } else {
+      console.log('sendBrowserNotification - unavailable.');
+      alert(message);
     }
-
-    var notification = new Notification(message, opts);
-    notification.onshow = async function() { 
-      console.log("sendBrowserNotification - Notification displayed");
-      await playNotificationAudio();
-    };
-    console.log('sendBrowserNotification - sent', notification);
-    
-  } else {
-    console.log('sendBrowserNotification - permissions denied.');
+  } catch(e) {
+    console.log('sendBrowserNotification - error', e);
     alert(message);
   }
-
 }
 
 
