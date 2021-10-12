@@ -162,7 +162,7 @@ async function checkBrowserNotificationsSchedulingAvailability () {
 async function requestBrowserNotificationsPermissions () {
   console.log('requestBrowserNotificationsPermissions');
 
-  if (checkBrowserNotificationsAvailability()) {
+  if (await checkBrowserNotificationsAvailability()) {
     if (Notification.permission !== "granted") {
       console.log('requestBrowserNotificationsPermissions - being asked.');
       let permission = await Notification.requestPermission();
@@ -179,7 +179,7 @@ async function sendBrowserNotification(message, when) {
   console.log('sendBrowserNotification', message, when);
 
   try {
-    if (checkBrowserNotificationsAvailability()) {
+    if (await checkBrowserNotificationsAvailability()) {
       if (await requestBrowserNotificationsPermissions()) {
         console.log('sendBrowserNotification - permissions already granted, attempting to send.');
 
