@@ -18,7 +18,7 @@
 }
 
 .meetingTime {
-  margin: 20px 0px 10px 0px;  
+  margin: 15px 0px 10px 0px;
 }
 
 .iconRefresh {
@@ -101,7 +101,7 @@
 
 #clockdiv > div {
   padding: 10px;
-  margin: 15px 5px 15px 5px;
+  margin: 10px 5px 10px 5px;
   border-radius: 5px;
   display: inline-block;
 }

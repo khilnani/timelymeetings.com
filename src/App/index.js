@@ -6,10 +6,10 @@ import { SplashScreen } from '@capacitor/splash-screen';
 import { App as CapacitorApp } from '@capacitor/app';
 import { Browser } from '@capacitor/browser';
 
-import { 
-  RefreshCircle as RefreshCircleIcon , 
-  Notifications as NotificationsEnabledIcon, 
-  NotificationsOffOutline as NotificationsDisabledIcon 
+import {
+  RefreshCircle as RefreshCircleIcon,
+  Notifications as NotificationsEnabledIcon,
+  NotificationsOffOutline as NotificationsDisabledIcon
 } from 'react-ionicons'
 
 import * as State from '../Utils/State'
@@ -77,7 +77,7 @@ class App extends Component {
   }
 
   //////////////////////////////////////////////////////
-  
+
   // Based on https://www.sitepoint.com/build-javascript-countdown-timer-no-dependencies/
   // CSS from https://stackoverflow.com/questions/7082257/css-how-to-skin-a-select-box-with-css
 
@@ -95,16 +95,16 @@ class App extends Component {
 
     let warningTime = new Date(Date.parse(endTime) - meetingWarning * 60 * 1000);
     if (warningTime > Date.now()) {
-      if (await Notifications.scheduleNotification(message_warning + meetingWarning + " minutes.", warningTime) ) {
+      if (await Notifications.scheduleNotification(message_warning + meetingWarning + " minutes.", warningTime)) {
         notificationWarningSentOrScheduled = true;
       }
     } else {
       console.log('End time is sooner than the warning time, skipping warning notification.');
       notificationWarningSentOrScheduled = true;
     }
-    
-    if(endTime > Date.now() ) {
-      if (await Notifications.scheduleNotification(message_end, endTime) ) {
+
+    if (endTime > Date.now()) {
+      if (await Notifications.scheduleNotification(message_end, endTime)) {
         notificationFinalSentOrScheduled = true;
       }
     } else {
@@ -114,7 +114,7 @@ class App extends Component {
 
     console.log('notificationWarningSentOrScheduled', notificationWarningSentOrScheduled);
     console.log('notificationFinalSentOrScheduled', notificationFinalSentOrScheduled);
-  
+
     // Debug if anything pending
     await Notifications.getPendingNotifications();
 
@@ -145,7 +145,7 @@ class App extends Component {
       const minutes = Math.floor((total / 1000 / 60) % 60);
       const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
       const days = Math.floor(total / (1000 * 60 * 60 * 24));
-    
+
       return {
         total,
         days,
@@ -154,15 +154,15 @@ class App extends Component {
         seconds
       };
     }
-  
+
     async function updateClock() {
       const t = getTimeRemaining(endTime);
 
       //console.log("updateClock", t.total);
       console.log("updateClock");
-      
+
       const bodyClassList = document.body.classList;
-  
+
       if (t.total > meetingWarning * 60 * 1000) {
         bodyClassList.remove('bodyWarning');
         bodyClassList.remove('bodyComplete');
@@ -181,7 +181,7 @@ class App extends Component {
       if (t.total > 0) {
         setClock(t.hours, t.minutes, t.seconds);
       } else {
-        clearInterval(timeInterval);        
+        clearInterval(timeInterval);
         setClock(0, 0, 0);
 
         bodyClassList.remove('bodyWarning');
@@ -194,17 +194,17 @@ class App extends Component {
         }
       }
     }
-  
+
     await updateClock();
-  
+
     timeInterval = setInterval(updateClock, 1000);
   }
 
   //////////////////////////////////////////////////////
 
-  updateMeetingTime (startTime, endTime) {
+  updateMeetingTime(startTime, endTime) {
     console.log('updateMeetingTime');
-  
+
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString
     let options = {
       hour: "numeric",
@@ -212,63 +212,63 @@ class App extends Component {
     };
     const startTimeStr = startTime.toLocaleTimeString("en-us", options);
     let endTimeStr = endTime.toLocaleTimeString("en-us", options);
-  
+
     document.getElementById("meetingTime").textContent = startTimeStr + " to " + endTimeStr
   }
-  
+
   //////////////////////////////////////////////////////
-  
+
   updateStartTimeOptions() {
     console.log('updateStartTimeOptions');
-  
+
     let meetingDuration = State.getMeetingDuration();
     let now = Utils.getNow();
     let slots = Utils.getTimeslots(now.date, meetingDuration);
-  
+
     let select = document.getElementById("meetingSlot");
     select.options.length = 0;
-  
+
     let selected = undefined;
-  
-    for(let index in slots) {
+
+    for (let index in slots) {
       select.options[select.options.length] = new Option(slots[index].label, slots[index].value);
       if (slots[index].selected)
         selected = slots[index].value;
-    }    
+    }
     select.value = selected;
   }
-  
+
   //////////////////////////////////////////////////////
-  
-  async updateCountdown () {
+
+  async updateCountdown() {
     console.log('updateCountdown');
-  
+
     State.saveToLocalStorage();
-  
+
     let o = State.getUserOptions();
     let meetingDuration = o.meetingDuration;
     let meetingSlot = o.meetingSlot;
     let meetingSpeedy = o.meetingSpeedy;
     let meetingWarning = o.meetingWarning;
-  
+
     let meetingStartTime = new Date(Date.parse(meetingSlot));
     console.log('meetingStartTime', meetingStartTime);
-  
-  
+
+
     if (meetingSpeedy === true || meetingSpeedy === "true") {
       meetingDuration = meetingDuration - 5;
     }
-  
+
     let meetingEndTime = new Date(Date.parse(meetingStartTime) + meetingDuration * 60 * 1000);
     console.log('meetingEndTime', meetingEndTime);
-  
+
     // update display
     this.updateMeetingTime(meetingStartTime, meetingEndTime);
 
     await this.initializeClock("clockdiv", meetingEndTime, meetingWarning);
-  
+
   }
-  
+
   //////////////////////////////////////////////////////
 
   async onDurationChange() {
@@ -312,7 +312,7 @@ class App extends Component {
 
     enabled = !enabled;
 
-    this.setState({enabled: enabled});
+    this.setState({ enabled: enabled });
 
     console.log("togglePause - new enabled?", enabled);
 
@@ -328,20 +328,20 @@ class App extends Component {
 
   async launchSupport() {
     console.log("launchSupport", isNative);
-    if(isNative) {
-      CapacitorApp.openUrl({url: supportLink}) 
+    if (isNative) {
+      CapacitorApp.openUrl({ url: supportLink })
     } else {
-      Browser.open({url: supportLink})
+      Browser.open({ url: supportLink })
     }
   }
-  
+
   //////////////////////////////////////////////////////
 
   async componentDidMount() {
     console.log("componentDidMount");
 
     await Notifications.checkNotificationsAvailability();
-    
+
     this.updateStartTimeOptions();
     State.updateFromLocalStorage(this.updateStartTimeOptions);
     await this.updateCountdown();
@@ -354,7 +354,7 @@ class App extends Component {
 
     console.log('componentDidMount - state', this.state);
 
-    if(!this.state.enabled) {
+    if (!this.state.enabled) {
       await Notifications.pauseNotifications();
     }
 
@@ -366,153 +366,148 @@ class App extends Component {
 
   render() {
     return (
-        <div className="content">
+      <div className="content">
 
-          <div className="header">
-            <img src={logoImage} className="logo" alt="Timely Meetings logo"/>
-            <span className="headerText">
-              <h1>Timely Meetings</h1>
-              <h4>Countdown Timer</h4>
-            </span>
-          </div>
+        <div className="header">
+          <img src={logoImage} className="logo" alt="Timely Meetings logo" />
+          <span className="headerText">
+            <h1>Timely Meetings</h1>
+            <h4>Countdown Timer</h4>
+          </span>
+        </div>
 
-          <p className="meetingTime">
-            <span id="meetingTime"></span>
-          </p>
+        <p className="meetingTime">
+          <span id="meetingTime"></span>
+        </p>
 
-          <div id="clockdiv">
-            <div>
-              <span className="hours"></span>
-              <div className="clocktext">Hours</div>
-            </div>
-            <div>
-              <span className="minutes"></span>
-              <div className="clocktext">Minutes</div>
-            </div>
-            <div>
-              <span className="seconds"></span>
-              <div className="clocktext">Seconds</div>
-            </div>
-          </div>
-
+        <div id="clockdiv">
           <div>
+            <span className="hours"></span>
+            <div className="clocktext">Hours</div>
+          </div>
+          <div>
+            <span className="minutes"></span>
+            <div className="clocktext">Minutes</div>
+          </div>
+          <div>
+            <span className="seconds"></span>
+            <div className="clocktext">Seconds</div>
+          </div>
+        </div>
+
+        <div>
 
           <p>
-              <label className="label" htmlFor="meetingSlot">Start: </label>
-              <select className="select" name="meetingSlot" id="meetingSlot" 
-                onChange={this.onSlotChange}
-              >
-                <option value="-1">Loading ...</option>
-              </select>
-              <RefreshCircleIcon
-              className="iconRefresh"
-                title='Reset timer'
-                width='30px'
-                height='30px'
-                onClick={this.onRefreshClick}
-              />
 
-              <label className="label" htmlFor="meetingDuration" id="meetingDurationLabel">Length: </label>
-              <select className="select" name="meetingDuration" id="meetingDuration" defaultValue="30"
-                onChange={this.onDurationChange}>
-                <option value="15">15 mins</option>
-                <option value="30">30 mins</option>
-                <option value="45">45 mins</option>
-                <option value="60">1 hour</option>
-                <option value="90">1.5 hours</option>
-                <option value="120">2 hours</option>
-                <option value="150">2.5 hours</option>
-                <option value="180">3 hours</option>
-              </select>
-
-
-
-            </p>
-
-            <p>
-
-              <label id="meetingSpeedyLabel" className="label" htmlFor="meetingSpeedy">End early?</label>
-              <input className="checkbox" type="checkbox" id="meetingSpeedy" name="meetingSpeedy"
-                onChange={this.onSpeedyChange}
-              />
-
-              <label id="meetingWarningLabel" className="label" htmlFor="meetingWarning">Notification: </label>
-              <select className="select" name="meetingWarning" id="meetingWarning" defaultValue="5"
-                onChange={this.onWarningChange}>
-                <option value="1">1 min</option>
-                <option value="2">2 min</option>
-                <option value="3">3 min</option>
-                <option value="4">4 min</option>
-                <option value="5">5 mins</option>
-                <option value="10">10 mins</option>
-                <option value="15">15 mins</option>
-                <option value="20">20 mins</option>
-                <option value="25">25 mins</option>
-                <option value="30">30 mins</option>
-                <option value="45">45 mins</option>
-                <option value="50">50 mins</option>
-                <option value="45">55 mins</option>
-                <option value="60">1 hour</option>
-              </select>
-
-              {
-                (this.state.enabled === false) && 
-                  <NotificationsDisabledIcon
-                  className="iconNotifications"
-                  title='Click to enable notifications'
-                  height="28px"
-                  width="28px"
-                  onClick={this.togglePause}
-                />
-              }
-
-              {
-                (this.state.enabled === true) && 
-                <NotificationsEnabledIcon
-                  className="iconNotifications"
-                  title='Click to disable notifications'
-                  height="28px"
-                  width="28px"
-                  onClick={this.togglePause}
-                />
-              }
-
-            </p>
+            <label id="meetingWarningLabel" className="label" htmlFor="meetingWarning">End of Meeting Notification: </label>
+            <select className="select" name="meetingWarning" id="meetingWarning" defaultValue="5"
+              onChange={this.onWarningChange}>
+              <option value="1">1 min</option>
+              <option value="2">2 min</option>
+              <option value="3">3 min</option>
+              <option value="4">4 min</option>
+              <option value="5">5 mins</option>
+              <option value="10">10 mins</option>
+              <option value="15">15 mins</option>
+              <option value="20">20 mins</option>
+              <option value="25">25 mins</option>
+              <option value="30">30 mins</option>
+              <option value="45">45 mins</option>
+              <option value="50">50 mins</option>
+              <option value="45">55 mins</option>
+              <option value="60">1 hour</option>
+            </select>
 
             {
-            (!isNative) && 
-            <p>
-              <span className="tinyText copyrightText" >
-                &copy; {(new Date()).getFullYear()} <a href="https://khilnani.org" target="_blank"  rel="noreferrer">Nik Khilnani</a>
-                <span> | </span>
-                <span>Ver: {version.published}</span> 
+              (this.state.enabled === false) &&
+              <NotificationsDisabledIcon
+                className="iconNotifications"
+                title='Click to enable notifications'
+                height="28px"
+                width="28px"
+                onClick={this.togglePause}
+              />
+            }
+
+            {
+              (this.state.enabled === true) &&
+              <NotificationsEnabledIcon
+                className="iconNotifications"
+                title='Click to disable notifications'
+                height="28px"
+                width="28px"
+                onClick={this.togglePause}
+              />
+            }
+
+          </p>
+
+          <p>
+
+            <label className="label" htmlFor="meetingDuration" id="meetingDurationLabel">Duration: </label>
+            <select className="select" name="meetingDuration" id="meetingDuration" defaultValue="30"
+              onChange={this.onDurationChange}>
+              <option value="15">15 mins</option>
+              <option value="30">30 mins</option>
+              <option value="45">45 mins</option>
+              <option value="60">1 hour</option>
+              <option value="90">1.5 hours</option>
+              <option value="120">2 hours</option>
+              <option value="150">2.5 hours</option>
+              <option value="180">3 hours</option>
+            </select>
+
+            <label id="meetingSpeedyLabel" className="label" htmlFor="meetingSpeedy">End early?</label>
+            <input className="checkbox" type="checkbox" id="meetingSpeedy" name="meetingSpeedy"
+              onChange={this.onSpeedyChange}
+            />
+
+          </p>
+
+          <p>
+            <label className="label" htmlFor="meetingSlot">Start: </label>
+            <select className="select" name="meetingSlot" id="meetingSlot"
+              onChange={this.onSlotChange}
+            >
+              <option value="-1">Loading ...</option>
+            </select>
+
+            <RefreshCircleIcon
+              className="iconRefresh"
+              title='Reset timer'
+              width='30px'
+              height='30px'
+              onClick={this.onRefreshClick}
+            />
+          </p>
+
+          {
+            (!isNative) &&
+            <div className="bottom">
+              <p className="tinyText copyrightText">
+                &copy; {(new Date()).getFullYear()} <a href="https://khilnani.org" target="_blank" rel="noreferrer">Nik Khilnani</a>
                 <span> | </span>
                 <span className="link" role="button" tabIndex="0" onClick={this.launchSupport}>Support</span>
-                 
-                {
-                  /*
-                    <span> | <a href="/legal/termsofuse/" target="_blank"  rel="noreferrer">Terms of Use</a> | <a href="/legal/privacy/" target="_blank"  rel="noreferrer">Privacy Policy</a></span>
-                  */
-                }
-                
-              </span>
-            </p>
-            }
+              <span> | </span>
+                Ver: {version.published}
+              </p>
+            </div>
+          }
 
-{
-            (isNative) && 
-            <p>
-              <span className="tinyText copyrightText" >
-                &copy; {(new Date()).getFullYear()} <a href="https://timelymeetings.com" target="_blank"  rel="noreferrer">Timely Meetings</a>
-                <span> | </span>
-                <span>Ver: {version.published}</span> 
-              </span>
-            </p>
-            }
-
-          </div>
+          {
+            (isNative) &&
+            <div className="bottom bottom-padding">
+              <p className="tinyText copyrightText">
+              &copy; {(new Date()).getFullYear()} <a href="https://timelymeetings.com" target="_blank" rel="noreferrer">Timely Meetings</a>
+              <span> | </span>
+              Ver: {version.published}
+              </p>
+            </div>
+          }
 
         </div>
+
+      </div>
     );
   }
 }

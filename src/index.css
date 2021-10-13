@@ -16,6 +16,17 @@ body {
   transition: background-color 2s ease-out;  
 }
 
+.bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.bottom-padding {
+  padding: 0 0 15px 0;
+}
 /* 
 //////////////////////////////////////////////////////
 */
