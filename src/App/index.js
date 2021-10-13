@@ -483,7 +483,7 @@ class App extends Component {
 
           {
             (!isNative) &&
-            <div className="bottom">
+            <div className="bottom bottom-padding">
               <p className="tinyText copyrightText">
                 &copy; {(new Date()).getFullYear()} <a href="https://khilnani.org" target="_blank" rel="noreferrer">Nik Khilnani</a>
                 <span> | </span>
