@@ -15,12 +15,12 @@ _Have an Apple Phone or Watch and want to get notifications on your watch?_ Usin
 
 ## Key features (So far)
 
-* Available as a web app at https://timelymeetings.com (leverages browser notifications) and Apple iOS Phone app with Apple Watch notifications support.
-* Auto-detects meeting start time. But, allows you to adjust the start time as well
-* Pick from a variety of meeting duration ranging from 15 minutes to 3 hours. We really hope, your meetings are not 3 hours long though.
-* Automatically shorten meetings by 5 minutes to allow everyone time to prepare for the next meeting.
-* In addition to sending a notification when the meeting ends, the app also sends notifications a few minutes before your meeting ends so you can start wrapping up. You can configure or turn these off as needed.
-* The color of the app changes as you approach the end of your meeting to allow you to take advantage of peripheral vision.
+* **Web and iOS App** - Available as a web app at https://timelymeetings.com (leverages browser notifications) and an Apple iOS Phone app with Apple Watch notifications support (Requires you to build/install via XCode).
+* **Auto-detects Meeting Start time** But, allows you to adjust the start time as well
+* **Custom Meeting Duration** Pick from a variety of meeting duration ranging from 15 minutes to 3 hours. We really hope, your meetings are not 3 hours long though. You can also start the timer before a meeting starts in case you are early.
+* **Speedy Meetings** * Automatically shorten meetings by 5 minutes to allow everyone time to prepare for the next meeting.
+* **Custom Notifications** * In addition to sending a notification when the meeting ends, the app also sends notifications a few minutes before your meeting ends so you can start wrapping up. You can configure or turn these off as needed.
+* **Nuanced User Experience** The color of the app changes as you approach the end of your meeting to allow you to take advantage of peripheral vision. Additionally, the app is designed to fit in one screen view on mobile or desktop to allow tiling the web app to a corner of your desktop
 
 Feel free to send any feature suggestions or bug reports to support@timelymeetings.com . 
 
