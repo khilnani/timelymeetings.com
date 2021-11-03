@@ -29,13 +29,13 @@ Feel free to send any feature suggestions or bug reports to support@timelymeetin
 
 ### Web App
 
-<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/web/Screen%20Shot%201.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/apple%20iphone/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202.png" />
+<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/web/Screen%20Shot%201.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/apple%20iphone/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202.png" width="40%" />
 <img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/apple%20iphone/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%203.png" width="40%" />
 
 ### Apple iOS App
 
-<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/apple%20iphone/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%201.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/web/Screen%20Shot%202.png" />
-<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/web/Screen%20Shot%203.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/apple%20watch/Simulator%20Screen%20Shot%20-%20Apple%20Watch%206%2044mm%20-%20iPhone%2011%20Pro%20Max%20-%201.png"/><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/apple%20watch/Simulator%20Screen%20Shot%20-%20Apple%20Watch%206%2044mm%20-%20iPhone%2011%20Pro%20Max%20-%202.png" />
+<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/apple%20iphone/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%201.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/web/Screen%20Shot%202.png" width="40%" />
+<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/web/Screen%20Shot%203.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/apple%20watch/Simulator%20Screen%20Shot%20-%20Apple%20Watch%206%2044mm%20-%20iPhone%2011%20Pro%20Max%20-%201.png" width="40%"/><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/apple%20watch/Simulator%20Screen%20Shot%20-%20Apple%20Watch%206%2044mm%20-%20iPhone%2011%20Pro%20Max%20-%202.png" width="40%"/>
 
 
 # Dev Notes
