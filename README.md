@@ -27,8 +27,8 @@ Feel free to send any feature suggestions or bug reports to support@timelymeetin
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/README/30DCBFAF-DCF1-45A6-AAFF-F3DED62C02F7.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/README/74A63E99-30AB-4196-A31F-621AEB2177C5.png" width="40%" />
-<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/README/0710F98A-9176-4A34-93CF-4102B0F1878A.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/README/03F0D00B-5AB7-4FA3-98BA-94B25834137C.png" width="40%" />
+<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/App%20Store/iphone/IMG_1060.PNG" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/App%20Store/iphone/IMG_1062.PNG" width="40%" />
+<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/App%20Store/iphone/IMG_1064.PNG" width="40%" />
 
 # Dev Notes
 
