@@ -44,6 +44,8 @@ Feel free to send any feature suggestions or bug reports to support@timelymeetin
 
 The Web App is built using [React](https://reactjs.org). The Mobile Native app uses [Ionic Capacitor](https://capacitorjs.com).
 
+The web app is hosted on Github Pages (docs folder). React publishes the build to this directory.
+
 ## Links
 
 #### GitHub Pages
