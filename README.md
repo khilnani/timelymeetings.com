@@ -27,8 +27,16 @@ Feel free to send any feature suggestions or bug reports to support@timelymeetin
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/App%20Store/iphone/IMG_1060.PNG" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/App%20Store/iphone/IMG_1062.PNG" width="40%" />
-<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/App%20Store/iphone/IMG_1064.PNG" width="40%" />
+### Web App
+
+<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/web/Screen%20Shot%201.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/apple%20iphone/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%202.png" />
+<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/apple%20iphone/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%203.png" width="40%" />
+
+### Apple iOS App
+
+<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/apple%20iphone/Simulator%20Screen%20Shot%20-%20iPhone%2011%20Pro%20Max%20-%201.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/web/Screen%20Shot%202.png" />
+<img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/web/Screen%20Shot%203.png" width="40%" /><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/apple%20watch/Simulator%20Screen%20Shot%20-%20Apple%20Watch%206%2044mm%20-%20iPhone%2011%20Pro%20Max%20-%201.png"/><img src="https://raw.githubusercontent.com/khilnani/timelymeetings.com/master/assets/Screenshots/apple%20watch/Simulator%20Screen%20Shot%20-%20Apple%20Watch%206%2044mm%20-%20iPhone%2011%20Pro%20Max%20-%202.png" />
+
 
 # Dev Notes
 
@@ -38,21 +46,17 @@ The Web App is built using [React](https://reactjs.org). The Mobile Native app u
 
 ## Links
 
-HTML/CSS
-
-- https://sabe.io/classes/css/grouping-nesting-selectors
-
-GitHub Pages
+#### GitHub Pages
 
 - SPA on Github Pages
   - https://github.com/rafgraph/spa-github-pages
   - https://itnext.io/so-you-want-to-host-your-single-age-react-app-on-github-pages-a826ab01e48
 
-React
+#### React
 
 - https://create-react-app.dev/docs/advanced-configuration/
 - 
-Capacitor 
+#### Capacitor 
 
 - https://capacitorjs.com/docs/getting-started
 - https://capacitorjs.com/docs/web
@@ -63,7 +67,7 @@ Capacitor
   - https://capacitorjs.com/docs/apis/browser
 - https://capacitorjs.com/docs/apis/app#statechangelistener
 
-Icons
+#### Icons
 
 - https://react-ionicons.netlify.app/
 - https://github.com/ionic-team/cordova-res
@@ -72,7 +76,7 @@ Icons
 - iPhone
   - https://developer.apple.com/design/human-interface-guidelines/watchos/visual/app-icon/
 
-Utilities
+#### Utilities
 
 - https://appiconmaker.co/Home/Index/e21c03d0-8767-4304-91d1-710f10958353
 - https://realfavicongenerator.net/
