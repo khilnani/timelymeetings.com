@@ -1,18 +1,28 @@
 # TimelyMeetings
 
-A simple no-frills web/ios app that starts counting down how much time is left in your current meeting. 
+Timely Meetings is a straightforward meeting timer app that auto-detects when your meeting start-time and displays a count down. 
 
-For quick access you can
-1. Make [timelymeetings.com](https://timelymeetings.com) your browser's home page [(?)](https://lmgtfy.app/?q=change+browser%27s+default+home+page)
-2. Add [timelymeetings.com](https://timelymeetings.com) to your phone's Home Screen [(?)](https://lmgtfy.app/?q=ios+add+a+web+page+to+home+screen), or
+In addition to sending a notification when the meeting ends, the app also sends notifications before your meeting ends so you can start wrapping up.
+
+_Have an Apple Phone or Watch and want to get notifications on your watch?_ Using XCode you can build the iOS version of the app and install to your device. 
+
+
+### For Quick Access 
+
+1. Make [timelymeetings.com](https://timelymeetings.com) your browser's home page [(?)](https://lmgtfy.app/?q=change+browser%27s+default+home+page), or ...
+2. Add [timelymeetings.com](https://timelymeetings.com) to your phone's Home Screen [(?)](https://lmgtfy.app/?q=ios+add+a+web+page+to+home+screen), or ...
 3. Install [Ionic Capacitor](https://capacitorjs.com/) and XCode to install the app to your Apple Phone
 
 ## Key features (So far)
 
-* **Notifications** - You get two notifications - a 5 minute warning that changes the app to yellow and when the meeting wraps up. The app will send browser notifications if available and fall back to old school alert popups if notifications are not available (e.g. Mobile iOS Safari) or disabled.
-* **Start Time Auto-detection** - The application will auto-detect when your meeting start time so you do not need to do any math to determine how much time is left. But, you can adjust this if needed.
-* **Resume Support** - The meeting configuration is saved in the browser, so if you refresh or recreate the browser window the count down will pick up where it left off.
-* **Mobile Support** - While designed to be kept open in a small window on your screen, feel free to pull up the web app on your mobile phone. This might be useful if you are sharing your screen on a Zoom call or need the entire desktop for your work. 
+* Auto-detects meeting start time. But, allows you to adjust the start time as well
+* Pick from a variety of meeting duration ranging from 15 minutes to 3 hours. We really hope, your meetings are not 3 hours long though.
+* Automatically shorten meetings by 5 minutes to allow everyone time to prepare for the next meeting.
+* In addition to sending a notification when the meeting ends, the app also sends notifications a few minutes before your meeting ends so you can start wrapping up. You can configure or turn these off as needed.
+* The color of the app changes as you approach the end of your meeting to allow you to take advantage of peripheral vision.
+* The app is also available as a web app at https://timelymeetings.com any time!
+
+Feel free to send any feature suggestions or bug reports to support@timelymeetings.com . 
 
 
 ## Screenshots
