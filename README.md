@@ -1,8 +1,8 @@
 # TimelyMeetings
 
-> - Timely Meetings is a straightforward meeting timer app that auto-detects when your meeting start-time and displays a count down. 
-> - In addition to sending a notification when the meeting ends, the app also sends notifications before your meeting ends so you can start wrapping up.
-> - _Have an Apple Phone or Watch and want to get notifications on your watch?_ Using XCode you can build the iOS version of the app and install to your device. 
+Timely Meetings is a straightforward meeting timer app that auto-detects when your meeting start-time and displays a count down. 
+In addition to sending a notification when the meeting ends, the app also sends notifications before your meeting ends so you can start wrapping up.
+_Have an Apple Phone or Watch and want to get notifications on your watch?_ Using XCode you can build the iOS version of the app and install to your device. 
 
 
 ### For Quick Access 
